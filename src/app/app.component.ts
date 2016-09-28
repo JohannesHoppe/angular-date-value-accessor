@@ -8,10 +8,12 @@ import { Release } from './shared/release';
 })
 export class AppComponent {
 
-  release: Release;
+  release1: Release;
+  release2: Release;
 
   constructor() {
 
-    this.release = new Release('Proprioception', 'Reinforcement', new Date('2016-09-15'));
+    this.release1 = new Release('1.5.8', 'arbitrary-fallbacks', new Date('2016-07-22'));
+    this.release2 = new Release('2.0.0', 'proprioception-reinforcement', new Date('2016-09-15'));
   }
 }

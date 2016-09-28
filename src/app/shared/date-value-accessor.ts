@@ -2,12 +2,11 @@ import {Directive, ElementRef, Renderer, forwardRef} from '@angular/core';
 
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms/src/directives/control_value_accessor';
 
-/*
 export const DATE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => DateValueAccessor),
   multi: true
-};*/
+};
 
 /**
  * The accessor for writing a value and listening to changes on a date input element
@@ -18,10 +17,11 @@ export const DATE_VALUE_ACCESSOR: any = {
  *  ```
  */
 @Directive({
-  selector:
-      'input[type=date][formControlName],input[type=date][formControl],input[type=date][ngModel]',
-  host: {'(input)': 'onChange($event.target.valueAsDate + 9999)', '(blur)': 'onTouched()'},
-  //providers: [DATE_VALUE_ACCESSOR]
+  // this 'more correct' selector would cause a breaking change
+  // selector: 'input[type=date][formControlName],input[type=date][formControl],input[type=date][ngModel]',
+  selector: '[dateValueAccessor]',
+  host: {'(input)': 'onChange($event.target.valueAsDate)', '(blur)': 'onTouched()'},
+  providers: [DATE_VALUE_ACCESSOR]
 })
 export class DateValueAccessor implements ControlValueAccessor {
   onChange = (_: any) => {};

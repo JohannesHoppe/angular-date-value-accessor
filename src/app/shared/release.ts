@@ -1,8 +1,8 @@
 export class Release {
 
     constructor(
-        public firstPart: string,
-        public secondPart: string,
+        public version: string,
+        public name: string,
         public releaseDate: Date) {
     }
 }

@@ -5,9 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+// IMPORTANT: importing & declaring the DateValueAccessor
+import { DateValueAccessor } from './shared/date-value-accessor';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DateValueAccessor
   ],
   imports: [
     BrowserModule,

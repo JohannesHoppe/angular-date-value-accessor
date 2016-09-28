@@ -2,13 +2,28 @@
 
   <h1>DefaultValueAccessor</h1>
 
-  First name: <input type="text" name="firstPart" [(ngModel)]="release.firstPart"><br>
-  Last name: <input type="text" name="secondPart" [(ngModel)]="release.secondPart"><br>
-  Relase date: <input type="date" name="releaseDate" [(ngModel)]="release.releaseDate"><br>
+  First name: <input type="text" name="version" [(ngModel)]="release1.version"><br>
+  Last name: <input type="text" name="name" [(ngModel)]="release1.name"><br>
+  Relase date: <input type="date" name="releaseDate" [(ngModel)]="release1.releaseDate"><br>
 
   <hr>
   DEBUG:
 
-  {{ release | json }}
+  {{ release1 | json }}
 </form>
 
+<hr>
+
+<form>
+
+  <h1>DateValueAccessor</h1>
+
+  First name: <input type="text" name="version" [(ngModel)]="release2.version"><br>
+  Last name: <input type="text" name="name" [(ngModel)]="release2.name"><br>
+  Relase date: <input type="date" name="releaseDate" [(ngModel)]="release2.releaseDate" dateValueAccessor><br>
+
+  <hr>
+  DEBUG:
+
+  {{ release2 | json }}
+</form>
