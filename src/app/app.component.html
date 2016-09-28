@@ -1,3 +1,14 @@
-<h1>
-  {{title}}
-</h1>
+<form>
+
+  <h1>DefaultValueAccessor</h1>
+
+  First name: <input type="text" name="firstPart" [(ngModel)]="release.firstPart"><br>
+  Last name: <input type="text" name="secondPart" [(ngModel)]="release.secondPart"><br>
+  Relase date: <input type="date" name="releaseDate" [(ngModel)]="release.releaseDate"><br>
+
+  <hr>
+  DEBUG:
+
+  {{ release | json }}
+</form>
+

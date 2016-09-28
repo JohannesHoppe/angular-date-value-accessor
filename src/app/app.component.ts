@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Release } from './shared/release';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  release: Release;
+
+  constructor() {
+
+    this.release = new Release('Proprioception', 'Reinforcement', new Date('2016-09-15'));
+  }
 }
