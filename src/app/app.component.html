@@ -2,15 +2,15 @@
 
   <h1>DefaultValueAccessor</h1>
 
-  Version: <input type="text" name="version" [(ngModel)]="release1.version"><br>
-  Name: <input type="text" name="name" [(ngModel)]="release1.name"><br>
-  Relase date: <input type="date" name="releaseDate" [(ngModel)]="release1.releaseDate"><br>
-
-  <hr>
-  DEBUG:
-
-  {{ release1 | json }}
+  <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release1.version">
+  <label>Name:</label>        <input type="text" name="name" [(ngModel)]="release1.name">
+  <label>Relase date:</label> <input type="date" name="releaseDate" [(ngModel)]="release1.releaseDate">
 </form>
+
+<pre>
+DEBUG:
+{{ release1 | json }}
+</pre>
 
 <hr>
 
@@ -18,12 +18,12 @@
 
   <h1>DateValueAccessor</h1>
 
-  Version: <input type="text" name="version" [(ngModel)]="release2.version"><br>
-  Name: <input type="text" name="name" [(ngModel)]="release2.name"><br>
-  Relase date: <input type="date" name="releaseDate" [(ngModel)]="release2.releaseDate" dateValueAccessor><br>
-
-  <hr>
-  DEBUG:
-
-  {{ release2 | json }}
+  <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release2.version">
+  <label>Name:</label>        <input type="text" name="name" [(ngModel)]="release2.name">
+  <label>Relase date:</label> <input type="date" name="releaseDate" [(ngModel)]="release2.releaseDate" dateValueAccessor>
 </form>
+
+<pre>
+DEBUG:
+{{ release2 | json }}
+</pre>

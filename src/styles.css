@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+ font-family: Helvetica, Arial, sans-serif;
+}
+
+svg {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+label {
+  float: left;
+  width: 200px;
+}
+
+input {
+  display: block;
+  margin: 5px;
+  width: 200px;
+}
+
+
+form, pre {
+  margin-left: 120px;
+}
+
+pre {
+  background-color: #f7f7f7;
+  width: 380px;
+  padding: 12px;
+}
