@@ -12,13 +12,13 @@ export const DATE_VALUE_ACCESSOR: any = {
  * The accessor for writing a value and listening to changes on a date input element
  *
  *  ### Example
- *  ```
- *  <input type="date" name="myBirthday" ngModel>
- *  ```
+ *  `<input type="date" name="myBirthday" ngModel dateValueAccessor>`
  */
 @Directive({
-  // this 'more correct' selector would cause a breaking change
+  // this selector changes the behavior silently, might break existing code
   // selector: 'input[type=date][formControlName],input[type=date][formControl],input[type=date][ngModel]',
+
+  // this selector is an opt-in version
   selector: '[dateValueAccessor]',
   host: {'(input)': 'onChange($event.target.valueAsDate)', '(blur)': 'onTouched()'},
   providers: [DATE_VALUE_ACCESSOR]
