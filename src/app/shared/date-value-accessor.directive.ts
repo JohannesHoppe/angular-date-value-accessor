@@ -1,10 +1,9 @@
-import {Directive, ElementRef, Renderer, forwardRef} from '@angular/core';
-
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms/src/directives/control_value_accessor';
+import { Directive, ElementRef, HostListener, Renderer, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms/src/directives/control_value_accessor';
 
 export const DATE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => DateValueAccessor),
+  useExisting: forwardRef(() => DateValueAccessorDirective),
   multi: true
 };
 
@@ -12,20 +11,20 @@ export const DATE_VALUE_ACCESSOR: any = {
  * The accessor for writing a value and listening to changes on a date input element
  *
  *  ### Example
- *  `<input type="date" name="myBirthday" ngModel dateValueAccessor>`
+ *  `<input type="date" name="myBirthday" ngModel useValueAsDate>`
  */
 @Directive({
-  // this selector changes the behavior silently, might break existing code
+  // this selector changes the previous behavior silently and might break existing code
   // selector: 'input[type=date][formControlName],input[type=date][formControl],input[type=date][ngModel]',
 
   // this selector is an opt-in version
-  selector: '[dateValueAccessor]',
-  host: {'(input)': 'onChange($event.target.valueAsDate)', '(blur)': 'onTouched()'},
+  selector: '[useValueAsDate]',
   providers: [DATE_VALUE_ACCESSOR]
 })
-export class DateValueAccessor implements ControlValueAccessor {
-  onChange = (_: any) => {};
-  onTouched = () => {};
+export class DateValueAccessorDirective implements ControlValueAccessor {
+
+  @HostListener('input', ['$event.target.valueAsDate']) onChange = (_: any) => { };
+  @HostListener('blur', []) onTouched = () => { };
 
   constructor(private _renderer: Renderer, private _elementRef: ElementRef) { }
 

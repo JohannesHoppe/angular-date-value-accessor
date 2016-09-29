@@ -22,8 +22,9 @@ input {
 }
 
 
-form, pre {
+app-root {
   margin-left: 120px;
+  display:block;
 }
 
 pre {
