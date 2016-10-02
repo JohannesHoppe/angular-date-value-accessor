@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Release } from './shared/release';
+import { Release } from './release';
 
 @Component({
   selector: 'app-root',

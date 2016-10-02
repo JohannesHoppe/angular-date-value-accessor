@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms/src/dire
 
 export const DATE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => DateValueAccessorDirective),
+  useExisting: forwardRef(() => DateValueAccessor),
   multi: true
 };
 
@@ -21,7 +21,7 @@ export const DATE_VALUE_ACCESSOR: any = {
   selector: '[useValueAsDate]',
   providers: [DATE_VALUE_ACCESSOR]
 })
-export class DateValueAccessorDirective implements ControlValueAccessor {
+export class DateValueAccessor implements ControlValueAccessor {
 
   @HostListener('input', ['$event.target.valueAsDate']) onChange = (_: any) => { };
   @HostListener('blur', []) onTouched = () => { };
