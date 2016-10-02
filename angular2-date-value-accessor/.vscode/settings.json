@@ -4,10 +4,11 @@
     "**/*.js": {
       "when": "$(basename).ts"
     },
-    "**/*.js.map": true,
     "**/*.d.ts": {
       "when": "$(basename).ts"
-    }
+    },
+    "**/*.js.map": true,
+    "**/*.metadata.json": true
   },
   "typescript.tsdk": "node_modules/typescript/lib"
 }
