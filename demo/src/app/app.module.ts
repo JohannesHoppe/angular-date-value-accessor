@@ -5,12 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { DateValueAccessorDirective } from './shared/date-value-accessor.directive';
+//import { DateValueAccessorDirective } from './shared/date-value-accessor.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DateValueAccessorDirective
+    //DateValueAccessorDirective
   ],
   imports: [
     BrowserModule,

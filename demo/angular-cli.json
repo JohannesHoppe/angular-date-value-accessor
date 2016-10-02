@@ -1,7 +1,7 @@
 {
   "project": {
     "version": "1.0.0-beta.16",
-    "name": "angular2-date-value-accessor"
+    "name": "angular2-date-value-accessor-demo"
   },
   "apps": [
     {
@@ -19,19 +19,13 @@
       ],
       "scripts": [],
       "environments": {
-        "source": "environments/environment.ts",
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "source": "environment.ts",
+        "dev": "environment.ts"
       }
     }
   ],
   "addons": [],
   "packages": [],
-  "test": {
-    "karma": {
-      "config": "./karma.conf.js"
-    }
-  },
   "defaults": {
     "styleExt": "css",
     "prefixInterfaces": false
