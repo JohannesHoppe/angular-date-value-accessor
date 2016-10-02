@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-// IMPORTANT: importing & declaring the DateValueAccessorDirective
 import { DateValueAccessorDirective } from './shared/date-value-accessor.directive';
 
 @NgModule({
