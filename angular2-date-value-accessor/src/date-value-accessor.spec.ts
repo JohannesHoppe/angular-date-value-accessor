@@ -1,13 +1,24 @@
 import 'es6-shim';
 import 'reflect-metadata';
 
+import 'zone.js/dist/zone';
+import 'zone.js/dist/long-stack-trace-zone';
+import 'zone.js/dist/proxy.js';
+import 'zone.js/dist/sync-test';
+import 'zone.js/dist/jasmine-patch';
+import 'zone.js/dist/async-test';
+import 'zone.js/dist/fake-async-test';
+
 import { async, TestBed, ComponentFixture } from '@angular/core/testing';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { By } from '@angular/platform-browser';
 
 import { Component, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DateValueAccessorModule } from './module';
 import { DateValueAccessor } from './date-value-accessor';
+
+TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
 @Component({
   template: `
@@ -49,9 +60,12 @@ describe('DateValueAccessor', () => {
     formComponent = fixture.componentInstance;
   }));
 
-  it('should fix the date input controls', () => {
+  it('should fix date input controls', () => {
 
-    fixture.debugElement.query(By.directive(DateValueAccessor));
+    var element = fixture.debugElement.query(By.directive(DateValueAccessor));
+
+    debugger;
+    expect(true).toBe(true);
   });
 });
 
