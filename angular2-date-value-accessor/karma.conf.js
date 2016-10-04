@@ -44,7 +44,7 @@ module.exports = function (config) {
     //singleRun: true
 
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: true
   };
 
   config.set(_config);

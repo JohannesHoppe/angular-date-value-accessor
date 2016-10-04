@@ -23,14 +23,17 @@ TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicT
 @Component({
   template: `
   <form>
+    <input type="text" name="test" [(ngModel)]="test">
     <input type="date" name="test1" [(ngModel)]="testDate1">
     <input type="date" name="test2" [(ngModel)]="testDate2" useValueAsDate>
   </form>`
 })
 export class DummyFormComponent {
+  test: string;
   testDate1: Date;
   testDate2: Date;
   constructor() {
+    this.test = 'Hello NG2';
     this.testDate1 = new Date('2016-07-22');
     this.testDate2 = new Date('2016-09-15');
   }
@@ -46,26 +49,23 @@ export class DummyModule { }
 
 describe('DateValueAccessor', () => {
   let fixture: ComponentFixture<DummyFormComponent>;
-  let formComponent: DummyFormComponent;
 
   beforeEach(async(() => {
 
     TestBed.configureTestingModule({
-      imports: [DummyModule]
+      imports: [FormsModule, DummyModule]
     });
 
     TestBed.compileComponents();
 
     fixture = TestBed.createComponent(DummyFormComponent);
-    formComponent = fixture.componentInstance;
+    fixture.detectChanges();
   }));
 
-  it('should fix date input controls', () => {
+  it('should fix date input controls to be bindable on dates', () => {
 
     var element = fixture.debugElement.query(By.directive(DateValueAccessor));
-
-    debugger;
-    expect(true).toBe(true);
+    expect(element.nativeElement.value).toBe('2016-09-15');
   });
 });
 
