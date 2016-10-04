@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Renderer, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms/src/directives/control_value_accessor';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export const DATE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
