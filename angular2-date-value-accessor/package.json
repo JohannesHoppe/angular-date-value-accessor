@@ -28,7 +28,7 @@
     "build": "ngc",
     "test": "tslint src/*.ts --exclude=src/*.d.ts && ngc && karma start",
     "prepublish": "ngc && copyfiles -f src/*.js src/*.js.map src/*.d.ts src/*.metadata.json .",
-    "postpublish": "rimraf date-value-accessor.* index.* module.* src/*.js src/*.js.map src/*.d.ts src/*.metadata.json compiled"
+    "postpublish": "rimraf date-value-accessor.* index.* module.* compiled"
   },
   "repository": {
     "type": "git",
