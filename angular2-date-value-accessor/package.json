@@ -41,7 +41,11 @@
     "ControlValueAccessor",
     "DateValueAccessor"
   ],
-  "author": "Johannes Hoppe",
+  "author": {
+      "name": "Johannes Hoppe",
+      "email": "johannes.hoppe@haushoppe-its.de",
+      "url": "http://haushoppe-its.de/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/johanneshoppe/angular2-date-value-accessor/issues"
