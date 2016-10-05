@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { DateValueAccessor } from 'angular2-date-value-accessor';
+import { DateValueAccessorModule } from 'angular2-date-value-accessor';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { DateValueAccessor } from 'angular2-date-value-accessor';
     BrowserModule,
     FormsModule,
     HttpModule,
-    DateValueAccessor
+    DateValueAccessorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
