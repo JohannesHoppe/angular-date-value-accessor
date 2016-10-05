@@ -16,7 +16,7 @@ Download the package via NPM:
 npm install --save angular2-date-value-accessor
 ```
 
-Then import the module via NgModue:
+Then import the module via NgModule:
 
 ```js
 // app.module.ts
