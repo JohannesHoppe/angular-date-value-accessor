@@ -1,0 +1,33 @@
+<h1>Reactive Form</h1>
+
+<div class="bad">
+  <h2>DefaultValueAccessor</h2>
+
+  <form [formGroup]="myForm1">
+    <label>Version:</label>     <input type="text" formControlName="version">
+    <label>Name:</label>        <input type="text" formControlName="name">
+    <label>Relase date:</label> <input type="date" formControlName="releaseDate">
+  </form>
+
+  <pre>
+  DEBUG:
+  {{ release1 | json }}
+  </pre>
+</div>
+
+<hr>
+
+<div class="good">
+  <h2>DateValueAccessor</h2>
+
+  <form [formGroup]="myForm2">
+    <label>Version:</label>     <input type="text" formControlName="version">
+    <label>Name:</label>        <input type="text" formControlName="name">
+    <label>Relase date:</label> <input type="date" formControlName="releaseDate" useValueAsDate>
+  </form>
+
+  <pre>
+  DEBUG:
+  {{ release2 | json }}
+  </pre>
+</div>
