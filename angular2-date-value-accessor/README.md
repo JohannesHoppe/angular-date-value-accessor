@@ -1,11 +1,25 @@
-# DateValueAccessor for Angular 2
+# DateValueAccessor for Angular
+[![NPM version][npm-image]][npm-url]
+
+[![Screenshot](https://johanneshoppe.github.io/angular2-date-value-accessor/assets/screenshot.png)](http://johanneshoppe.github.io/angular2-date-value-accessor/)
 
 A custom value accessor for Angular 2.  
-Now you can use JavaScript Date objects directly with two-way data bindings (ngModel).
+Now you can use JavaScript Date objects directly with two-way data bindings (ngModel) as well as with reactive forms (formControlName/formControl).
 
-## Example:
+## Examples:
+
+You have to explicitly opt-in by adding the attribute `useValueAsDate` to a date input control:
+
 ```html
 <input type="date" name="myBirthday" ngModel useValueAsDate>
+
+OR
+
+<input type="date" name="myBirthday" [(ngModel)]="myBirthday" useValueAsDate>
+
+OR
+
+<input type="date" formControlName="myBirthday" useValueAsDate>
 ```
 
 ## Installation:
@@ -30,3 +44,11 @@ import { DateValueAccessorModule } from 'angular2-date-value-accessor';
 })
 export class AppModule { }
 ```
+
+## Demo
+
+There is a demo at:
+http://johanneshoppe.github.io/angular2-date-value-accessor/
+
+[npm-url]: https://npmjs.org/package/angular2-date-value-accessor
+[npm-image]: https://badge.fury.io/js/angular2-date-value-accessor.svg

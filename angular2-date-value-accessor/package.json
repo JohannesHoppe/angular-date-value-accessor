@@ -1,6 +1,6 @@
 {
   "name": "angular2-date-value-accessor",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "DateValueAccessor for Angular 2 (two-way data bindings with ngModel on date objects)",
   "main": "index.js",
   "typings": "./index.d.ts",
