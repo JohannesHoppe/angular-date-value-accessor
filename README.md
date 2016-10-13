@@ -45,6 +45,9 @@ import { DateValueAccessorModule } from 'angular-date-value-accessor';
 export class AppModule { }
 ```
 
+Now you can apply the "usaValueAsDate" to your date input controls.
+
+
 ## Demo
 
 There is a demo at:
