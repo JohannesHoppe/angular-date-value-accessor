@@ -1,4 +1,4 @@
-# Angular 2: How to use a date input controls with real Date Objects
+# Angular 2: How to use date input controls with Angular Forms
 [![NPM version][npm-image]][npm-url]
 
 [![Screenshot](https://johanneshoppe.github.io/angular-date-value-accessor/assets/screenshot.png)](http://johanneshoppe.github.io/angular-date-value-accessor/)
@@ -6,7 +6,7 @@
 
 ## The problem
 
-Working with forms is pretty easy with Angular 2.
+Working with forms is pretty easy in Angular 2.
 You just need to decide between Template-Driven and Reactive Forms and you are ready to start with some bindings and validation. The following code shows a two-way data binding with `ngModel` against a property of type `string`:
 
 ```
