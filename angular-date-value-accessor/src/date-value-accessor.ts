@@ -29,7 +29,10 @@ export class DateValueAccessor implements ControlValueAccessor {
   constructor(private _renderer: Renderer, private _elementRef: ElementRef) { }
 
   writeValue(value: Date): void {
-    if (!value) return;
+    if (!value) {
+		this._renderer.setElementProperty(this._elementRef.nativeElement, 'value', null);
+		return;
+	}
     this._renderer.setElementProperty(this._elementRef.nativeElement, 'valueAsDate', value);
   }
 
