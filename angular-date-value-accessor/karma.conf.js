@@ -11,6 +11,11 @@ module.exports = function (config) {
       '**/*.ts': ['webpack', 'sourcemap']
     },
 
+    // https://github.com/angular/angular-cli/issues/2125#issuecomment-247395088
+    mime: {
+      'text/x-typescript': ['ts','tsx']
+    },
+
     webpack: {
       resolve: {
         root: __dirname,
