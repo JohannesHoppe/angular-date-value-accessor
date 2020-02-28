@@ -21,6 +21,7 @@
     "src/index.ts"
   ],
   "angularCompilerOptions": {
-    "genDir": "compiled"
+    "genDir": "compiled",
+    "enableIvy": false
   }
 }
