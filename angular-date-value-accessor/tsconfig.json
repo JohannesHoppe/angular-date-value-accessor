@@ -1,6 +1,7 @@
 {
   "version": "2.0.3",
   "compilerOptions": {
+    "importHelpers": true,
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "es5",
