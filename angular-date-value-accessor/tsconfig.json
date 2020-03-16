@@ -1,6 +1,7 @@
 {
   "version": "2.0.3",
   "compilerOptions": {
+    "importHelpers": true,
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "es5",
@@ -20,6 +21,7 @@
     "src/index.ts"
   ],
   "angularCompilerOptions": {
-    "genDir": "compiled"
+    "genDir": "compiled",
+    "enableIvy": false
   }
 }
