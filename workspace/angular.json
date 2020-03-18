@@ -1,0 +1,47 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1, 
+  "newProjectRoot": "projects",
+  "projects": {
+    "date-value-accessor": {
+      "projectType": "library",
+      "root": "projects/date-value-accessor",
+      "sourceRoot": "projects/date-value-accessor/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/date-value-accessor/tsconfig.lib.json",
+            "project": "projects/date-value-accessor/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/date-value-accessor/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/date-value-accessor/src/test.ts",
+            "tsConfig": "projects/date-value-accessor/tsconfig.spec.json",
+            "karmaConfig": "projects/date-value-accessor/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/date-value-accessor/tsconfig.lib.json",
+              "projects/date-value-accessor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "date-value-accessor"
+}
