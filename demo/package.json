@@ -9,17 +9,18 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/schematics": "^9.0.7",
     "@angular/common": "2.0.1",
     "@angular/compiler": "2.0.1",
     "@angular/core": "2.0.1",
     "@angular/forms": "2.0.1",
     "@angular/platform-browser": "2.0.1",
     "@angular/platform-browser-dynamic": "2.0.1",
+    "angular-date-value-accessor": "*",
     "core-js": "^2.4.1",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.6.23",
-    "angular-date-value-accessor": "*"
+    "zone.js": "^0.6.23"
   },
   "devDependencies": {
     "@types/jasmine": "^2.2.30",
