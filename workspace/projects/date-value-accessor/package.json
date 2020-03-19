@@ -1,6 +1,28 @@
 {
   "name": "date-value-accessor",
-  "version": "0.0.1",
+  "version": "1.0.0-rc.1",
+  "description": "DateValueAccessor for Angular (two-way data bindings with ngModel on date objects)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johanneshoppe/angular-date-value-accessor.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "forms",
+    "ControlValueAccessor",
+    "DateValueAccessor"
+  ],
+  "author": {
+    "name": "Johannes Hoppe",
+    "email": "johannes.hoppe@haushoppe-its.de",
+    "url": "http://haushoppe-its.de/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johanneshoppe/angular-date-value-accessor/issues"
+  },
+  "homepage": "https://github.com/johanneshoppe/angular-date-value-accessor",
   "peerDependencies": {
     "@angular/common": "^9.0.6",
     "@angular/core": "^9.0.6",

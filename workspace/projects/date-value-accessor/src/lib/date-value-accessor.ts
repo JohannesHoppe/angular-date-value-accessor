@@ -18,28 +18,30 @@ export const DATE_VALUE_ACCESSOR: any = {
   // selector: 'input[type=date][formControlName],input[type=date][formControl],input[type=date][ngModel]',
 
   // this selector is an opt-in version
+  // tslint:disable-next-line: directive-selector
   selector: '[useValueAsDate]',
   providers: [DATE_VALUE_ACCESSOR]
 })
+// tslint:disable-next-line: directive-class-suffix
 export class DateValueAccessor implements ControlValueAccessor {
 
   @HostListener('input', ['$event.target.valueAsDate']) onChange = (_: any) => { };
   @HostListener('blur', []) onTouched = () => { };
 
-  constructor(private _renderer: Renderer2, private _elementRef: ElementRef) { }
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
   writeValue(value: Date): void {
     if (!value) {
-      this._renderer.setProperty(this._elementRef.nativeElement, 'value', null);
+      this.renderer.setProperty(this.elementRef.nativeElement, 'value', null);
       return;
     }
-    this._renderer.setProperty(this._elementRef.nativeElement, 'valueAsDate', value);
+    this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', value);
   }
 
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
   registerOnTouched(fn: () => void): void { this.onTouched = fn; }
 
   setDisabledState(isDisabled: boolean): void {
-    this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', isDisabled);
   }
 }

@@ -1,24 +1,57 @@
-# DateValueAccessor
+# DateValueAccessor for Angular
+[![NPM version][npm-image]][npm-url]
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
+[![Screenshot](https://johanneshoppe.github.io/angular-date-value-accessor/assets/screenshot.png)](http://johanneshoppe.github.io/angular-date-value-accessor/)
 
-## Code scaffolding
+A custom value accessor for Angular.  
+Now you can use `<input type="date">` (provides real JavaScript date objects) directly with two-way data bindings (ngModel) as well as with reactive forms (formControlName/formControl).
 
-Run `ng generate component component-name --project date-value-accessor` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project date-value-accessor`.
-> Note: Don't forget to add `--project date-value-accessor` or else it will be added to the default project in your `angular.json` file. 
+## Examples:
 
-## Build
+You have to explicitly opt-in by adding the attribute `useValueAsDate` to a date input control:
 
-Run `ng build date-value-accessor` to build the project. The build artifacts will be stored in the `dist/` directory.
+```html
+<input type="date" name="myBirthday" ngModel useValueAsDate>
 
-## Publishing
+OR
 
-After building your library with `ng build date-value-accessor`, go to the dist folder `cd dist/date-value-accessor` and run `npm publish`.
+<input type="date" name="myBirthday" [(ngModel)]="myBirthday" useValueAsDate>
 
-## Running unit tests
+OR
 
-Run `ng test date-value-accessor` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<input type="date" formControlName="myBirthday" useValueAsDate>
+```
 
-## Further help
+## Installation:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Download the package via NPM:
+
+```bash
+npm install --save angular-date-value-accessor
+```
+
+Then import the module via NgModule:
+
+```js
+// app.module.ts
+
+import { DateValueAccessorModule } from 'angular-date-value-accessor';
+
+@NgModule({
+  imports: [
+    DateValueAccessorModule
+  ]
+})
+export class AppModule { }
+```
+
+Now you can apply the "useValueAsDate" to your date input controls.
+
+
+## Demo
+
+There is a demo at:
+http://johanneshoppe.github.io/angular-date-value-accessor/
+
+[npm-url]: https://npmjs.org/package/angular-date-value-accessor
+[npm-image]: https://badge.fury.io/js/angular-date-value-accessor.svg
