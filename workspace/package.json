@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --project demo",
     "prebuild": "cd .. && copyfiles README.md workspace/projects/date-value-accessor",
+    "publish-it": "npm run build && cd dist/date-value-accessor && npm publish",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
