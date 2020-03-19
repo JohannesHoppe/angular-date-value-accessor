@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start": "ng serve --project demo",
     "prebuild": "cd .. && copyfiles README.md workspace/projects/date-value-accessor",
     "build": "ng build --prod",
     "test": "ng test",
