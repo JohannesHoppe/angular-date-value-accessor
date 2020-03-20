@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { DateValueAccessorModule } from './date-value-accessor.module';
+import { DateValueAccessor } from './date-value-accessor';
 
 @Component({
   template: `
@@ -38,8 +38,8 @@ describe('DateValueAccessor', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestFormComponent],
-      imports: [FormsModule, DateValueAccessorModule]
+      declarations: [TestFormComponent, DateValueAccessor],
+      imports: [FormsModule]
     })
     .compileComponents();
   }));

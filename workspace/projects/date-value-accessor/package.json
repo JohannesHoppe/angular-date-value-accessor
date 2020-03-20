@@ -1,6 +1,6 @@
 {
-  "name": "date-value-accessor",
-  "version": "1.0.0-rc.1",
+  "name": "angular-date-value-accessor",
+  "version": "1.0.0-rc.2",
   "description": "DateValueAccessor for Angular (two-way data bindings with ngModel on date objects)",
   "repository": {
     "type": "git",
