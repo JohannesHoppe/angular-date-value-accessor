@@ -7,7 +7,7 @@
     "prebuild": "cd .. && copyfiles README.md workspace/projects/date-value-accessor",
     "publish-it": "npm run build && cd dist/date-value-accessor && npm publish",
     "build": "ng build --prod",
-    "test": "ng test",
+    "test": "ng test --project date-value-accessor --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
