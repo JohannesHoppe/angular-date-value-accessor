@@ -1,33 +1,48 @@
-<h1>Reactive Form</h1>
-
-<div class="bad">
-  <h2>DefaultValueAccessor</h2>
-
-  <form [formGroup]="myForm1">
-    <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Name:</label>        <input type="text" formControlName="name">
-    <label>Relase date:</label> <input type="date" formControlName="releaseDate">
-  </form>
-
-  <pre>
-  DEBUG:
-  {{ release1 | json }}
-  </pre>
-</div>
-
-<hr>
+<h1>Reactive Forms</h1>
 
 <div class="good">
   <h2>DateValueAccessor</h2>
 
-  <form [formGroup]="myForm2">
+  <form [formGroup]="myForm1">
     <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Name:</label>        <input type="text" formControlName="name">
     <label>Relase date:</label> <input type="date" formControlName="releaseDate" useValueAsDate>
   </form>
 
-  <pre>
-  DEBUG:
-  {{ release2 | json }}
-  </pre>
+<pre>
+&lt;input type=&quot;text&quot;
+  formControlName=&quot;version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  formControlName=&quot;releaseDate&quot;
+  <b>useValueAsDate</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ release1 | json }}
+</pre>
+</div>
+
+<hr>
+
+<div class="bad">
+  <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
+
+  <form [formGroup]="myForm2">
+    <label>Version:</label>     <input type="text" formControlName="version">
+    <label>Relase date:</label> <input type="date" formControlName="releaseDate">
+  </form>
+
+<pre>
+&lt;input type=&quot;text&quot;
+  formControlName=&quot;version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  formControlName=&quot;releaseDate&quot;&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ release2 | json }}
+</pre>
 </div>

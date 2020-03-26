@@ -11,7 +11,7 @@ export class TemplateDrivenFormComponent {
   release2: Release;
 
   constructor() {
-    this.release1 = new Release('1.5.8', 'arbitrary-fallbacks', new Date('2016-07-22'));
-    this.release2 = new Release('2.0.0', 'proprioception-reinforcement', new Date('2016-09-15'));
+    this.release1 = new Release('2.0.0', new Date('2020-01-01'));
+    this.release2 = new Release('1.5.8', new Date('2016-07-22'));
   }
 }

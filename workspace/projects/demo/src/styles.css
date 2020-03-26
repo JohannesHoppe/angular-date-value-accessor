@@ -50,7 +50,7 @@ h1 {
   border-radius: 4px;
   padding: 10px 15px 10px 25px;
   margin: 20px;
-  height: 300px;
+  height: 400px;
 }
 
 .good {
@@ -63,6 +63,11 @@ h1 {
   background-color: #f2dede;
   border-color: #ebccd1;
   color: #a94442;
+}
+
+small {
+  font-weight: normal;
+  font-size: 0.8em;
 }
 
 /* fork on github badge */

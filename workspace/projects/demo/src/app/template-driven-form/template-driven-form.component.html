@@ -1,33 +1,56 @@
-<h1>Template-Driven Form</h1>
-
-<div class="bad">
-  <h2>DefaultValueAccessor</h2>
-
-  <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release1.version">
-    <label>Name:</label>        <input type="text" name="name" [(ngModel)]="release1.name">
-    <label>Relase date:</label> <input type="date" name="releaseDate" [(ngModel)]="release1.releaseDate">
-  </form>
-
-  <pre>
-  DEBUG:
-  {{ release1 | json }}
-  </pre>
-</div>
-
-<hr>
+<h1>Template-Driven Forms</h1>
 
 <div class="good">
   <h2>DateValueAccessor</h2>
 
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release2.version">
-    <label>Name:</label>        <input type="text" name="name" [(ngModel)]="release2.name">
-    <label>Relase date:</label> <input type="date" name="releaseDate" [(ngModel)]="release2.releaseDate" useValueAsDate>
+    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release1.version">
+    <label>Relase date:</label> <input type="date" name="releaseDate" [(ngModel)]="release1.releaseDate" useValueAsDate>
   </form>
 
-  <pre>
-  DEBUG:
-  {{ release2 | json }}
-  </pre>
+<pre>
+&lt;input type=&quot;text&quot;
+       name=&quot;version&quot;
+       [(ngModel)]=&quot;release1.version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+       name=&quot;releaseDate&quot;
+       [(ngModel)]=&quot;release1.releaseDate&quot;
+       <b>useValueAsDate</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ release1 | json }}
+</pre>
 </div>
+
+<hr>
+
+<div class="bad">
+  <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
+
+  <form>
+    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release2.version">
+    <label>Relase date:</label> <input type="date" name="releaseDate" [(ngModel)]="release2.releaseDate">
+  </form>
+
+<pre>
+&lt;input type=&quot;text&quot;
+  name=&quot;version&quot;
+  [(ngModel)]=&quot;release2.version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  name=&quot;releaseDate&quot;
+  [(ngModel)]=&quot;release2.releaseDate&quot;&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ release2 | json }}
+</pre>
+</div>
+
+
+
+
