@@ -1,10 +1,21 @@
 # DateValueAccessor for Angular
 [![NPM version][npm-image]][npm-url]
 
-[![Screenshot](https://johanneshoppe.github.io/angular-date-value-accessor/assets/screenshot.png)](http://johanneshoppe.github.io/angular-date-value-accessor/)
-
 A custom value accessor for Angular.  
 Now you can use `<input type="date">` (provides real JavaScript date objects) directly with two-way data bindings (ngModel) as well as with reactive forms (formControlName/formControl).
+
+## Demo
+
+Here you can see the DateValueAccessor - the binding works!
+
+![Example: works](https://johanneshoppe.github.io/angular-date-value-accessor/assets/reactive-works.gif)
+
+And this shows a not working form field (the default behaviour).
+
+![Example: does not work](https://johanneshoppe.github.io/angular-date-value-accessor/assets/reactive-does-not-work.gif)
+
+There is an example application at:
+http://johanneshoppe.github.io/angular-date-value-accessor/
 
 ## Examples:
 
@@ -48,10 +59,6 @@ export class AppModule { }
 Now you can apply the "useValueAsDate" to your date input controls.
 
 
-## Demo
-
-There is a demo at:
-http://johanneshoppe.github.io/angular-date-value-accessor/
 
 [npm-url]: https://npmjs.org/package/angular-date-value-accessor
 [npm-image]: https://badge.fury.io/js/angular-date-value-accessor.svg
