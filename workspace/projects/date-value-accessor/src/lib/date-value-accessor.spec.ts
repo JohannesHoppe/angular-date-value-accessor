@@ -1,5 +1,5 @@
 import { Component, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
@@ -58,12 +58,14 @@ describe('DateValueAccessor', () => {
       expect(normalInput.nativeElement.value).toBe('');
     });
 
-    it('should populate simple strings on change', done => {
+    it('should populate simple strings on change', fakeAsync(done => {
       dispatchInputEvent(normalInput.nativeElement, fixture, '1984-09-30').then(() => {
+        tick();
+        fixture.detectChanges();
         expect(fixture.componentInstance.testDate1).toEqual('1984-09-30');
         done();
       });
-    });
+    }));
   });
 
   describe('with the "useValueAsDate" attribute', () => {
@@ -71,16 +73,21 @@ describe('DateValueAccessor', () => {
     let fixedInput: DebugElement;
     beforeEach(() => fixedInput = fixture.debugElement.query(By.css('input[name=fixedInput]')));
 
-    it('should fix date input controls to bind on dates', () => {
-      expect(fixedInput.nativeElement.value).toBe('2020-01-01');
-    });
+    it('should fix date input controls to bind on dates', fakeAsync((done) => {
+      fixture.whenStable().then(() => {
+        expect(fixedInput.nativeElement.value).toBe('2020-01-01');
+        done();
+      });
+    }));
 
-    it('should also populate dates (instead of strings) on change', done => {
+    it('should also populate dates (instead of strings) on change', fakeAsync(done => {
       dispatchInputEvent(fixedInput.nativeElement, fixture, '2020-12-31').then(() => {
+        tick();
+        fixture.detectChanges();
         expect(fixture.componentInstance.testDate2).toEqual(jasmine.any(Date));
         expect(fixture.componentInstance.testDate2).toEqual(new Date('2020-12-31'));
         done();
       });
-    });
+    }));
   });
 });
