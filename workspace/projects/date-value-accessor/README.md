@@ -14,26 +14,34 @@ And this shows a not working form field (the default behaviour).
 
 ![Example: does not work](https://johanneshoppe.github.io/angular-date-value-accessor/assets/reactive-does-not-work.gif)
 
-There is an example application at:
+**There is an example application at:**  
 http://johanneshoppe.github.io/angular-date-value-accessor/
 
-## Examples:
+## Usage
 
 You have to explicitly opt-in by adding the attribute `useValueAsDate` to a date input control:
 
 ```html
-<input type="date" name="myBirthday" ngModel useValueAsDate>
+<input type="date"
+       name="myBirthday"
+       ngModel
+       useValueAsDate>
 
 OR
 
-<input type="date" name="myBirthday" [(ngModel)]="myBirthday" useValueAsDate>
+<input type="date"
+       name="myBirthday"
+       [(ngModel)]="myBirthday"
+       useValueAsDate>
 
 OR
 
-<input type="date" formControlName="myBirthday" useValueAsDate>
+<input type="date"
+       formControlName="myBirthday"
+       useValueAsDate>
 ```
 
-## Installation:
+## Installation
 
 Download the package via NPM:
 
