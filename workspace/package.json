@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --project demo",
-    "prebuild": "cd .. && copyfiles README.md workspace/projects/date-value-accessor",
+    "prebuild": "cd .. && npx copyfiles README.md workspace/projects/date-value-accessor",
     "publish-library": "npm run build && cd dist/date-value-accessor && npm publish",
     "publish-demo": "ng build --prod --project demo --base-href /angular-date-value-accessor/ && npx angular-cli-ghpages --dir dist/demo",
     "build": "ng build --prod --project date-value-accessor",
