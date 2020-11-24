@@ -27,12 +27,11 @@ export class DateLocalValueAccessor implements ControlValueAccessor {
 
   onChange: any = () => {};
 
-  @HostListener('input', ['$event.target.value']) onInput = (dateAsString: string) => {
+  @HostListener('input', ['$event.target.valueAsDate']) onInput = (date: Date) => {
     let selectedDate: Date | null = null;
-    if (dateAsString) {
+    if (date) {
       // Create new Date in local timezone of the system and "reset" time
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse
-      selectedDate = new Date(Date.parse(dateAsString + 'T00:00:00'));
+      selectedDate = convertUtcToLocalDate(date);
     }
     this.onChange(selectedDate);
   }
@@ -41,7 +40,7 @@ export class DateLocalValueAccessor implements ControlValueAccessor {
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
   writeValue(value: Date): void {
-    this.renderer.setProperty(this.elementRef.nativeElement, 'value', value ? formatDate(value) : null);
+    this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', value ? convertLocalToUtcDate(value) : null);
   }
 
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
@@ -52,20 +51,12 @@ export class DateLocalValueAccessor implements ControlValueAccessor {
   }
 }
 
-// Convert Date to Date string with format: yyyy-mm-dd
-// https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd?page=1&tab=votes#tab-top
-function formatDate(d: Date) {
-  let month = '' + (d.getMonth() + 1);
-  let day = '' + d.getDate();
-  const year = d.getFullYear();
+// https://stackoverflow.com/questions/53032953/what-is-the-correct-way-to-set-and-get-htmlinputelement-valueasdate-using-local
+function convertLocalToUtcDate(date: Date): Date {
+  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+}
 
-  if (month.length < 2) {
-    month = '0' + month;
-  }
-  if (day.length < 2) {
-    day = '0' + day;
-  }
-
-  return [year, month, day].join('-');
+function convertUtcToLocalDate(date: Date): Date {
+  return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
 }
 
