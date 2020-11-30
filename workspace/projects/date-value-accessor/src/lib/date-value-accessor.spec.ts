@@ -28,7 +28,6 @@ export class TestFormComponent {
 function dispatchInputEvent(inputElement: HTMLInputElement, fixture: ComponentFixture<TestFormComponent>, text: string): void {
   inputElement.value = text;
   inputElement.dispatchEvent(new Event('input'));
-  fixture.detectChanges();
 }
 
 describe('DateValueAccessor', () => {
