@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { DateValueAccessorModule } from 'projects/date-value-accessor/src/public-api';
+import { DateValueAccessorModule, LocalDateValueAccessorModule } from 'projects/date-value-accessor/src/public-api';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
@@ -17,7 +17,8 @@ import { TemplateDrivenFormComponent } from './template-driven-form/template-dri
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    DateValueAccessorModule
+    DateValueAccessorModule,
+    LocalDateValueAccessorModule
   ],
   bootstrap: [AppComponent]
 })
