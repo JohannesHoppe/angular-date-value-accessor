@@ -1,8 +1,10 @@
 import { Component, DebugElement } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+
 import { LocalDateValueAccessor } from './local-date-value-accessor.directive';
+import { dispatchInputEvent } from './spec-utils';
 
 @Component({
   template: `
@@ -11,23 +13,14 @@ import { LocalDateValueAccessor } from './local-date-value-accessor.directive';
     </form>`
 })
 export class TestFormComponent {
-  // Create local date from a specific day
-  // Hours are set to 0 in local time
-  testDate: Date = new Date(2020, 11, 8);
-}
-
-function dispatchInputEvent(inputElement: HTMLInputElement, fixture: ComponentFixture<TestFormComponent>, text: string) {
-  inputElement.value = text;
-  inputElement.dispatchEvent(new Event('input'));
-  fixture.detectChanges();
-  return fixture.whenStable();
+  testDate: Date = new Date(2020, 11, 8); // Create LOCAL Date
 }
 
 describe('LocalDateValueAccessor', () => {
 
   let fixture: ComponentFixture<TestFormComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestFormComponent, LocalDateValueAccessor],
       imports: [FormsModule]
@@ -37,29 +30,32 @@ describe('LocalDateValueAccessor', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestFormComponent);
-    fixture.detectChanges();
   });
+
+  beforeEach(waitForAsync(() => {
+    // https://stackoverflow.com/questions/39582707/updating-input-html-field-from-within-an-angular-2-test
+    fixture.detectChanges();
+    fixture.whenStable();
+  }));
 
   describe('with the "useValueAsDateLocal" attribute', () => {
 
     let fixedInput: DebugElement;
     beforeEach(() => fixedInput = fixture.debugElement.query(By.css('input[name=fixedInput]')));
 
-    it('should fix date input controls to bind on dates', fakeAsync((done) => {
-      fixture.whenStable().then(() => {
-        expect(fixedInput.nativeElement.value).toBe('2020-12-08');
-        done();
-      });
+    it('should fix date input controls to bind on dates', waitForAsync(() => {
+      expect(fixedInput.nativeElement.value).toBe('2020-12-08');
     }));
 
-    it('should also populate dates (instead of strings) on change', fakeAsync(done => {
-      dispatchInputEvent(fixedInput.nativeElement, fixture, '2020-12-31').then(() => {
-        tick();
-        fixture.detectChanges();
-        expect(fixture.componentInstance.testDate).toEqual(jasmine.any(Date));
-        expect(fixture.componentInstance.testDate).toEqual(new Date('2020-12-31'));
-        done();
-      });
+    it('should populate LOCAL dates (instead of strings) on change', waitForAsync(() => {
+      dispatchInputEvent(fixedInput.nativeElement, '2020-12-31');
+      expect(fixture.componentInstance.testDate).toEqual(jasmine.any(Date));
+      expect(fixture.componentInstance.testDate).toEqual(new Date(2020, 11, 31));
+      expect(fixture.componentInstance.testDate.getDate()).toBe(31);
+      expect(fixture.componentInstance.testDate.getMonth()).toBe(11);
+      expect(fixture.componentInstance.testDate.getFullYear()).toBe(2020);
+      expect(fixture.componentInstance.testDate.getHours()).toBe(0);
+      expect(fixture.componentInstance.testDate.getMinutes()).toBe(0);
     }));
   });
 });
