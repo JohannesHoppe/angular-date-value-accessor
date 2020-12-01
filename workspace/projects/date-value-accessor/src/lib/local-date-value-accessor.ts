@@ -14,11 +14,6 @@ export const LOCAL_DATE_VALUE_ACCESSOR: any = {
  *  `<input type="date" name="myBirthday" ngModel useValueAsLocalDate>`
  */
 @Directive({
-  // this selector changes the previous behavior silently and might break existing code
-  // selector: 'input[type=date][formControlName],input[type=date][formControl],input[type=date][ngModel]',
-
-  // this selector is an opt-in version
-  // tslint:disable-next-line: directive-selector
   selector: '[useValueAsLocalDate]',
   providers: [LOCAL_DATE_VALUE_ACCESSOR]
 })
@@ -30,8 +25,8 @@ export class LocalDateValueAccessor implements ControlValueAccessor {
   @HostListener('input', ['$event.target.valueAsDate']) onInput = (date: Date) => {
     let selectedDate: Date | null = null;
     if (date) {
-      // Create new Date in local timezone of the system and "reset" time
-      selectedDate = convertUtcToLocalDate(date);
+      // Create LOCAL Date, time is set to 00:00 in LOCAL time
+      selectedDate = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());;
     }
     this.onChange(selectedDate);
   }
@@ -39,8 +34,12 @@ export class LocalDateValueAccessor implements ControlValueAccessor {
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
-  writeValue(value: Date): void {
-    this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', value ? convertLocalToUtcDate(value) : null);
+  writeValue(date: Date): void {
+    // Create UTC Date, time is set to 00:00 in UTC time
+    const utcDate: Date = date ?
+      new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())) :
+      null;
+    this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', utcDate);
   }
 
   registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
@@ -51,12 +50,5 @@ export class LocalDateValueAccessor implements ControlValueAccessor {
   }
 }
 
+// Use Local Dates with html input type date
 // https://stackoverflow.com/questions/53032953/what-is-the-correct-way-to-set-and-get-htmlinputelement-valueasdate-using-local
-function convertLocalToUtcDate(date: Date): Date {
-  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-}
-
-function convertUtcToLocalDate(date: Date): Date {
-  return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
-}
-
