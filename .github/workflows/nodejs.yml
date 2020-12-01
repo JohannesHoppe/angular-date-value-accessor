@@ -25,6 +25,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cd workspace && npm ci
-    - run: cd workspace && npm run test
+    - run: cd workspace && ng test --project date-value-accessor --watch=false --browsers=ChromeHeadless
       env:
         CI: true
