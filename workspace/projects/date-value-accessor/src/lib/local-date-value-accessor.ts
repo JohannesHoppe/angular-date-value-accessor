@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, Renderer2, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export const DATE_VALUE_ACCESSOR: any = {
+export const LOCAL_DATE_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => LocalDateValueAccessor),
   multi: true
@@ -11,7 +11,7 @@ export const DATE_VALUE_ACCESSOR: any = {
  * The accessor for writing a value and listening to changes on a date input element
  *
  *  ### Example
- *  `<input type="date" name="myBirthday" ngModel useValueAsDate>`
+ *  `<input type="date" name="myBirthday" ngModel useValueAsLocalDate>`
  */
 @Directive({
   // this selector changes the previous behavior silently and might break existing code
@@ -20,7 +20,7 @@ export const DATE_VALUE_ACCESSOR: any = {
   // this selector is an opt-in version
   // tslint:disable-next-line: directive-selector
   selector: '[useValueAsLocalDate]',
-  providers: [DATE_VALUE_ACCESSOR]
+  providers: [LOCAL_DATE_VALUE_ACCESSOR]
 })
 // tslint:disable-next-line: directive-class-suffix
 export class LocalDateValueAccessor implements ControlValueAccessor {
