@@ -1,5 +1,6 @@
 # DateValueAccessor for Angular
 [![NPM version][npm-image]][npm-url]
+![Tests](https://github.com/JohannesHoppe/angular-date-value-accessor/workflows/Tests/badge.svg)
 
 A custom value accessor for Angular.  
 Now you can use `<input type="date">` (provides real JavaScript date objects) directly with two-way data bindings (ngModel) as well as with reactive forms (formControlName/formControl).
