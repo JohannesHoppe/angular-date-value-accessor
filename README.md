@@ -147,6 +147,8 @@ But Internet Explorer 11 does not support `<input type="date">` out of the box.
 If you want to support this browser, you need an additional polyfill:
 https://www.npmjs.com/package/date-input-polyfill
 
+![IE11 Demo](https://johanneshoppe.github.io/angular-date-value-accessor/assets/ie11.png)
+> Demo in IE11 using the `date-input-polyfill`. `LocalDateValueAccessor` works as expected. Please note that all input fields operate in local time. This means that `DateValueAccessor` does not behave as specified.
 
 
 [npm-url]: https://npmjs.org/package/angular-date-value-accessor
