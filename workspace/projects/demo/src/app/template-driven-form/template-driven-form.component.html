@@ -5,7 +5,7 @@
 
   <form>
     <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release1.version">
-    <label>Relase date:</label> <input type="date" name="releaseDate" [(ngModel)]="release1.releaseDate" useValueAsDate>
+    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="release1.releaseDate" useValueAsDate>
   </form>
 
 <pre>
@@ -27,12 +27,39 @@ DEBUG:
 
 <hr>
 
+<div class="good">
+  <h2>LocalDateValueAccessor</h2>
+
+  <form>
+    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release3.version">
+    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="release3.releaseDate" useValueAsLocalDate>
+  </form>
+
+  <pre>
+&lt;input type=&quot;text&quot;
+       name=&quot;version&quot;
+       [(ngModel)]=&quot;release3.version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+       name=&quot;releaseDate&quot;
+       [(ngModel)]=&quot;release3.releaseDate&quot;
+       <b>useValueAsLocalDate</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ release3 | json }}
+</pre>
+</div>
+
+<hr>
+
 <div class="bad">
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
   <form>
     <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release2.version">
-    <label>Relase date:</label> <input type="date" name="releaseDate" [(ngModel)]="release2.releaseDate">
+    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="release2.releaseDate">
   </form>
 
 <pre>

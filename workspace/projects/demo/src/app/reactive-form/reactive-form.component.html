@@ -5,7 +5,7 @@
 
   <form [formGroup]="myForm1">
     <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Relase date:</label> <input type="date" formControlName="releaseDate" useValueAsDate>
+    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsDate>
   </form>
 
 <pre>
@@ -25,12 +25,37 @@ DEBUG:
 
 <hr>
 
+<div class="good">
+  <h2>LocalDateValueAccessor</h2>
+
+  <form [formGroup]="myForm3">
+    <label>Version:</label>     <input type="text" formControlName="version">
+    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsLocalDate>
+  </form>
+
+  <pre>
+&lt;input type=&quot;text&quot;
+  formControlName=&quot;version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  formControlName=&quot;releaseDate&quot;
+  <b>useValueAsLocalDate</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ release3 | json }}
+</pre>
+</div>
+
+<hr>
+
 <div class="bad">
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
   <form [formGroup]="myForm2">
     <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Relase date:</label> <input type="date" formControlName="releaseDate">
+    <label>Release date:</label> <input type="date" formControlName="releaseDate">
   </form>
 
 <pre>

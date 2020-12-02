@@ -4,30 +4,23 @@ import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { DateValueAccessor } from './date-value-accessor';
+import { dispatchInputEvent } from './spec-utils';
 
 @Component({
   template: `
   <form>
-    <input type="text" name="test0" [(ngModel)]="test">
     <input type="date" name="normalInput" [(ngModel)]="testDate1">
     <input type="date" name="fixedInput" [(ngModel)]="testDate2" useValueAsDate>
   </form>`
 })
 export class TestFormComponent {
-  test: string;
-  testDate1: any;
+  testDate1: Date | string;
   testDate2: Date;
 
   constructor() {
-    this.test = 'Hello Angular';
-    this.testDate1 = new Date('2019-01-01');
-    this.testDate2 = new Date('2020-01-01');
+    this.testDate1 = new Date('2019-01-01'); // Create UTC Date
+    this.testDate2 = new Date('2020-01-01'); // Create UTC Date
   }
-}
-
-function dispatchInputEvent(inputElement: HTMLInputElement, fixture: ComponentFixture<TestFormComponent>, text: string): void {
-  inputElement.value = text;
-  inputElement.dispatchEvent(new Event('input'));
 }
 
 describe('DateValueAccessor', () => {
@@ -62,7 +55,7 @@ describe('DateValueAccessor', () => {
     });
 
     it('should populate simple strings on change', waitForAsync(() => {
-      dispatchInputEvent(normalInput.nativeElement, fixture, '1984-09-30');
+      dispatchInputEvent(normalInput.nativeElement, '1984-09-30');
       expect(fixture.componentInstance.testDate1).toEqual('1984-09-30');
     }));
   });
@@ -76,10 +69,15 @@ describe('DateValueAccessor', () => {
       expect(fixedInput.nativeElement.value).toBe('2020-01-01');
     }));
 
-    it('should also populate dates (instead of strings) on change', waitForAsync(() => {
-      dispatchInputEvent(fixedInput.nativeElement, fixture, '2020-12-31');
+    it('should populate UTC dates (instead of strings) on change', waitForAsync(() => {
+      dispatchInputEvent(fixedInput.nativeElement, '2020-12-31');
       expect(fixture.componentInstance.testDate2).toEqual(jasmine.any(Date));
       expect(fixture.componentInstance.testDate2).toEqual(new Date('2020-12-31'));
+      expect(fixture.componentInstance.testDate2.getUTCDate()).toBe(31);
+      expect(fixture.componentInstance.testDate2.getUTCMonth()).toBe(11);
+      expect(fixture.componentInstance.testDate2.getUTCFullYear()).toBe(2020);
+      expect(fixture.componentInstance.testDate2.getUTCHours()).toBe(0);
+      expect(fixture.componentInstance.testDate2.getUTCMinutes()).toBe(0);
     }));
   });
 });
