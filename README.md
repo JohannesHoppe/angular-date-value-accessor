@@ -80,7 +80,7 @@ When working with Dates in Javascript you either operate in UTC or Local Time.
 * Local Time depends on the host system time zone and offset.
 
 Javascript Dates support both the UTC and the Local Time representation.
-Depending on the requirements of your application you can choose the from these Value Accessors:
+Depending on the requirements of your application you can choose from these Value Accessors:
 * [DateValueAccessor (UTC)](#datevalueaccessor-utc)
 * [LocalDateValueAccessor (Local Time)](#localdatevalueaccessor-local-time)
 
