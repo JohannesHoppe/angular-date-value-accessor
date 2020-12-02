@@ -20,7 +20,7 @@ http://johanneshoppe.github.io/angular-date-value-accessor/
 
 ## Usage
 
-You have to explicitly opt-in by adding the attribute `useValueAsDate` to a date input control:
+You have to explicitly opt-in by adding the attribute `useValueAsDate` or `useValueAsLocalDate` to a date input control:
 
 ```html
 <!-- DateValueAccessor (UTC) --->
