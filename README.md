@@ -7,15 +7,22 @@ Now you can use `<input type="date">` (provides real JavaScript date objects) di
 
 ## Demo
 
-Here you can see the DateValueAccessor - the binding works!
+Here you can see the `DateValueAccessor` - the binding works!
+Changes to the input field are propagated to the model.
 
 ![Example: works](https://johanneshoppe.github.io/angular-date-value-accessor/assets/reactive-works.gif)
 
+And here you can see the `LocalDateValueAccessor`.
+Please notice how the date is adjusted due to the German time zone (UTC+1) and how the time offset works.
+
+![Example: works](https://johanneshoppe.github.io/angular-date-value-accessor/assets/reactive-works-local.gif)
+
 And this shows a not working form field (the default behaviour).
+Changes in the input field are propagated to the model, but unfortunately the date becomes a string which is not very useful for any further processing.
 
 ![Example: does not work](https://johanneshoppe.github.io/angular-date-value-accessor/assets/reactive-does-not-work.gif)
 
-**There is an example application at:**  
+**You can try out the demo at the following page:**  
 http://johanneshoppe.github.io/angular-date-value-accessor/
 
 ## Usage
@@ -87,7 +94,7 @@ Depending on the requirements of your application you can choose from these Valu
 
 ## DateValueAccessor (UTC)
 
-The DateValueAccessor operates in UTC (Coordinated Universal Time).
+The `DateValueAccessor` operates in UTC (Coordinated Universal Time).
 The HTML date input will read the UTC representation of the Date Object. When you select a date it will output an UTC date with the time set to 00:00 (UTC).
 
 Import the module via NgModule:
