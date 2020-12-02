@@ -61,4 +61,4 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-import 'date-input-polyfill';
+import 'configurable-date-input-polyfill';
