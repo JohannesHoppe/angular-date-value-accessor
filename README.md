@@ -139,6 +139,16 @@ Now you can apply the `useValueAsLocalDate` to your date input controls.
 
 > **ℹ️ Hint:** Most UI component libraries like Angular Material, Kendo Angular, PrimeNG implement their DatePickers operating in Local Time. The Angular Date Pipe uses the Local Time representation of the Date Object by default, too.
 
+
+## IE11 Support
+
+This package works great on modern browsers.
+But Internet Explorer 11 does not support `<input type="date">` out of the box.
+If you want to support this browser, you need an additional polyfill:
+https://www.npmjs.com/package/date-input-polyfill
+
+
+
 [npm-url]: https://npmjs.org/package/angular-date-value-accessor
 [npm-image]: https://badge.fury.io/js/angular-date-value-accessor.svg
 [tests-url]: https://github.com/JohannesHoppe/angular-date-value-accessor/actions?query=workflow%3ATests
