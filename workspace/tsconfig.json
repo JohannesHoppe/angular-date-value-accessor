@@ -21,5 +21,8 @@
         "dist/date-value-accessor"
       ]
     }
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true
   }
 }
