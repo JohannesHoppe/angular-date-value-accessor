@@ -1,5 +1,7 @@
 <h1>Reactive Forms</h1>
 
+<app-explanation-date-value-accessor></app-explanation-date-value-accessor>
+
 <div class="good">
   <h2>DateValueAccessor</h2>
 
@@ -20,10 +22,13 @@
 <pre>
 DEBUG:
 {{ release1 | json }}
+typeof(releaseDate): {{ typeof(release1.releaseDate) }}
 </pre>
 </div>
 
 <hr>
+
+<app-explanation-local-date-value-accessor></app-explanation-local-date-value-accessor>
 
 <div class="good">
   <h2>LocalDateValueAccessor</h2>
@@ -45,10 +50,13 @@ DEBUG:
 <pre>
 DEBUG:
 {{ release3 | json }}
+typeof(releaseDate): {{ typeof(release3.releaseDate) }}
 </pre>
 </div>
 
 <hr>
+
+<app-explanation-default-value-accessor></app-explanation-default-value-accessor>
 
 <div class="bad">
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
@@ -69,5 +77,6 @@ DEBUG:
 <pre>
 DEBUG:
 {{ release2 | json }}
+typeof(releaseDate): {{ typeof(release2.releaseDate) }}
 </pre>
 </div>

@@ -44,13 +44,19 @@ h1 {
   margin-left: 20px;
 }
 
+p {
+  margin: 20px;
+  font-size: 0.8em;
+  color: rgb(85, 85, 85);
+}
+
 .good,
 .bad {
   border: 1px solid transparent;
   border-radius: 4px;
   padding: 10px 15px 10px 25px;
   margin: 20px;
-  height: 400px;
+  height: 420px;
 }
 
 .good {
