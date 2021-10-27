@@ -15,7 +15,7 @@ export class TestFormComponent {
   control = new FormControl(new Date('2021-10-25').toISOString());
 }
 
-fdescribe('ISODateValueAccessor', () => {
+describe('ISODateValueAccessor', () => {
 
   let fixture: ComponentFixture<TestFormComponent>;
   let component: TestFormComponent;

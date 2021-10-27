@@ -40,12 +40,24 @@ app-reactive-form {
   width: 500px;
 }
 
+summary {
+  cursor: pointer;
+  padding: 2px;
+}
+
+summary:hover {
+  color:rgb(85, 85, 85);
+}
+
 h1 {
   margin-left: 20px;
 }
 
 p {
   margin: 20px;
+}
+
+p.small {
   font-size: 0.8em;
   color: rgb(85, 85, 85);
 }
@@ -74,6 +86,12 @@ p {
 small {
   font-weight: normal;
   font-size: 0.8em;
+}
+
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
 }
 
 /* fork on github badge */

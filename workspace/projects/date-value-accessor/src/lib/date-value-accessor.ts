@@ -14,15 +14,9 @@ export const DATE_VALUE_ACCESSOR: any = {
  *  `<input type="date" name="myBirthday" ngModel useValueAsDate>`
  */
 @Directive({
-  // this selector changes the previous behavior silently and might break existing code
-  // selector: 'input[type=date][formControlName],input[type=date][formControl],input[type=date][ngModel]',
-
-  // this selector is an opt-in version
-  // tslint:disable-next-line: directive-selector
   selector: '[useValueAsDate]',
   providers: [DATE_VALUE_ACCESSOR]
 })
-// tslint:disable-next-line: directive-class-suffix
 export class DateValueAccessor implements ControlValueAccessor {
 
   @HostListener('input', ['$event.target.valueAsDate']) onChange = (_: any) => { };

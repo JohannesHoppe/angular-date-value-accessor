@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Release } from '../shared/release';
+import { Release } from '../../shared/release';
 
 @Component({
   selector: 'app-reactive-form',
