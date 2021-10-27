@@ -8,39 +8,39 @@ import { Release } from '../../shared/release';
 })
 export class ReactiveFormComponent implements OnInit {
 
-  release1: Release;
-  release2: Release;
-  release3: Release;
+  demoDateValue: Release;
+  demoLocalDateValue: Release;
+  demoDefault: Release;
 
-  myForm1: FormGroup;
-  myForm2: FormGroup;
-  myForm3: FormGroup;
+  myFormDateValue: FormGroup;
+  myFormDefault: FormGroup;
+  myFormLocalDateValue: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.release1 = new Release('2.0.0', new Date('2020-01-01')); // UTC
-    this.release2 = new Release('1.5.8', new Date('2016-07-22')); // UTC
-    this.release3 = new Release('3.0.0', new Date(2020, 0, 1));   // with offset
+    this.demoDateValue = new Release('2.0.0', new Date('2020-01-01')); // UTC
+    this.demoLocalDateValue = new Release('3.0.0', new Date(2020, 0, 1)); // with offset
+    this.demoDefault = new Release('1.5.8', new Date('2016-07-22')); // UTC
   }
 
   ngOnInit() {
-    this.myForm1 = this.fb.group({
-      version:     [this.release1.version],
-      releaseDate: [this.release1.releaseDate]
+    this.myFormDateValue = this.fb.group({
+      version:     [this.demoDateValue.version],
+      releaseDate: [this.demoDateValue.releaseDate]
     });
 
-    this.myForm2 = this.fb.group({
-      version:     [this.release2.version],
-      releaseDate: [this.release2.releaseDate]
+    this.myFormLocalDateValue = this.fb.group({
+      version:     [this.demoLocalDateValue.version],
+      releaseDate: [this.demoLocalDateValue.releaseDate]
     });
 
-    this.myForm3 = this.fb.group({
-      version:     [this.release3.version],
-      releaseDate: [this.release3.releaseDate]
+    this.myFormDefault = this.fb.group({
+      version:     [this.demoDefault.version],
+      releaseDate: [this.demoDefault.releaseDate]
     });
 
-    this.myForm1.valueChanges.subscribe(values => this.release1 = new Release(values.version, values.releaseDate));
-    this.myForm2.valueChanges.subscribe(values => this.release2 = new Release(values.version, values.releaseDate));
-    this.myForm3.valueChanges.subscribe(values => this.release3 = new Release(values.version, values.releaseDate));
+    this.myFormDateValue.valueChanges.subscribe(values => this.demoDateValue = new Release(values.version, values.releaseDate));
+    this.myFormLocalDateValue.valueChanges.subscribe(values => this.demoLocalDateValue = new Release(values.version, values.releaseDate));
+    this.myFormDefault.valueChanges.subscribe(values => this.demoDefault = new Release(values.version, values.releaseDate));
   }
 
   typeof(obj: any) {

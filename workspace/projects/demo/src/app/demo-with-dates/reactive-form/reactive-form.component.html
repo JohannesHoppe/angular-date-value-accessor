@@ -5,7 +5,7 @@
 <div class="good">
   <h2>DateValueAccessor</h2>
 
-  <form [formGroup]="myForm1">
+  <form [formGroup]="myFormDateValue">
     <label>Version:</label>     <input type="text" formControlName="version">
     <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsDate>
   </form>
@@ -21,8 +21,8 @@
 
 <pre>
 DEBUG:
-{{ release1 | json }}
-typeof(releaseDate): {{ typeof(release1.releaseDate) }}
+{{ demoDateValue | json }}
+typeof(releaseDate): {{ typeof(demoDateValue.releaseDate) }}
 </pre>
 </div>
 
@@ -33,7 +33,7 @@ typeof(releaseDate): {{ typeof(release1.releaseDate) }}
 <div class="good">
   <h2>LocalDateValueAccessor</h2>
 
-  <form [formGroup]="myForm3">
+  <form [formGroup]="myFormLocalDateValue">
     <label>Version:</label>     <input type="text" formControlName="version">
     <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsLocalDate>
   </form>
@@ -49,8 +49,8 @@ typeof(releaseDate): {{ typeof(release1.releaseDate) }}
 
 <pre>
 DEBUG:
-{{ release3 | json }}
-typeof(releaseDate): {{ typeof(release3.releaseDate) }}
+{{ demoLocalDateValue | json }}
+typeof(releaseDate): {{ typeof(demoLocalDateValue.releaseDate) }}
 </pre>
 </div>
 
@@ -61,7 +61,7 @@ typeof(releaseDate): {{ typeof(release3.releaseDate) }}
 <div class="bad">
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
-  <form [formGroup]="myForm2">
+  <form [formGroup]="myFormDefault">
     <label>Version:</label>     <input type="text" formControlName="version">
     <label>Release date:</label> <input type="date" formControlName="releaseDate">
   </form>
@@ -76,7 +76,7 @@ typeof(releaseDate): {{ typeof(release3.releaseDate) }}
 
 <pre>
 DEBUG:
-{{ release2 | json }}
-typeof(releaseDate): {{ typeof(release2.releaseDate) }}
+{{ demoDefault | json }}
+typeof(releaseDate): {{ typeof(demoDefault.releaseDate) }}
 </pre>
 </div>

@@ -7,14 +7,14 @@ import { Release } from '../../shared/release';
 })
 export class TemplateDrivenFormComponent {
 
-  release1: Release;
-  release2: Release;
-  release3: Release;
+  demoDateValue: Release;
+  demoLocalDateValue: Release;
+  demoDefault: Release;
 
   constructor() {
-    this.release1 = new Release('2.0.0', new Date('2020-01-01')); // UTC
-    this.release2 = new Release('1.5.8', new Date('2016-07-22')); // UTC
-    this.release3 = new Release('3.0.0', new Date(2020, 0, 1));   // with offset
+    this.demoDateValue = new Release('2.0.0', new Date('2020-01-01')); // UTC
+    this.demoLocalDateValue = new Release('3.0.0', new Date(2020, 0, 1));   // with offset
+    this.demoDefault = new Release('1.5.8', new Date('2016-07-22')); // UTC
   }
 
   typeof(obj: any) {

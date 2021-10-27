@@ -6,25 +6,25 @@
   <h2>DateValueAccessor</h2>
 
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release1.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="release1.releaseDate" useValueAsDate>
+    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoDateValue.version">
+    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoDateValue.releaseDate" useValueAsDate>
   </form>
 
 <pre>
 &lt;input type=&quot;text&quot;
        name=&quot;version&quot;
-       [(ngModel)]=&quot;release1.version&quot;&gt;
+       [(ngModel)]=&quot;demoDateValue.version&quot;&gt;
 
 &lt;input type=&quot;date&quot;
        name=&quot;releaseDate&quot;
-       [(ngModel)]=&quot;release1.releaseDate&quot;
+       [(ngModel)]=&quot;demoDateValue.releaseDate&quot;
        <b>useValueAsDate</b>&gt;
 </pre>
 
 <pre>
 DEBUG:
-{{ release1 | json }}
-typeof(releaseDate): {{ typeof(release1.releaseDate) }}
+{{ demoDateValue | json }}
+typeof(releaseDate): {{ typeof(demoDateValue.releaseDate) }}
 </pre>
 </div>
 
@@ -36,25 +36,25 @@ typeof(releaseDate): {{ typeof(release1.releaseDate) }}
   <h2>LocalDateValueAccessor</h2>
 
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release3.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="release3.releaseDate" useValueAsLocalDate>
+    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoLocalDateValue.version">
+    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoLocalDateValue.releaseDate" useValueAsLocalDate>
   </form>
 
   <pre>
 &lt;input type=&quot;text&quot;
        name=&quot;version&quot;
-       [(ngModel)]=&quot;release3.version&quot;&gt;
+       [(ngModel)]=&quot;demoLocalDateValue.version&quot;&gt;
 
 &lt;input type=&quot;date&quot;
        name=&quot;releaseDate&quot;
-       [(ngModel)]=&quot;release3.releaseDate&quot;
+       [(ngModel)]=&quot;demoLocalDateValue.releaseDate&quot;
        <b>useValueAsLocalDate</b>&gt;
 </pre>
 
 <pre>
 DEBUG:
-{{ release3 | json }}
-typeof(releaseDate): {{ typeof(release3.releaseDate) }}
+{{ demoLocalDateValue | json }}
+typeof(releaseDate): {{ typeof(demoLocalDateValue.releaseDate) }}
 </pre>
 </div>
 
@@ -66,24 +66,24 @@ typeof(releaseDate): {{ typeof(release3.releaseDate) }}
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="release2.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="release2.releaseDate">
+    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoDefault.version">
+    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoDefault.releaseDate">
   </form>
 
 <pre>
 &lt;input type=&quot;text&quot;
   name=&quot;version&quot;
-  [(ngModel)]=&quot;release2.version&quot;&gt;
+  [(ngModel)]=&quot;demoDefault.version&quot;&gt;
 
 &lt;input type=&quot;date&quot;
   name=&quot;releaseDate&quot;
-  [(ngModel)]=&quot;release2.releaseDate&quot;&gt;
+  [(ngModel)]=&quot;demoDefault.releaseDate&quot;&gt;
 </pre>
 
 <pre>
 DEBUG:
-{{ release2 | json }}
-typeof(releaseDate): {{ typeof(release2.releaseDate) }}
+{{ demoDefault | json }}
+typeof(releaseDate): {{ typeof(demoDefault.releaseDate) }}
 </pre>
 </div>
 
