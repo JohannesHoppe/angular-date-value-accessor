@@ -1,13 +1,11 @@
 <h1>Reactive Forms</h1>
 
-<app-explanation-date-value-accessor></app-explanation-date-value-accessor>
-
 <div class="good">
   <h2>DateValueAccessor</h2>
 
   <form [formGroup]="myFormDateValue">
     <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsDate>
+    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsISO>
   </form>
 
 <pre>
@@ -28,14 +26,12 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 
 <hr>
 
-<app-explanation-local-date-value-accessor></app-explanation-local-date-value-accessor>
-
 <div class="good">
   <h2>LocalDateValueAccessor</h2>
 
   <form [formGroup]="myFormLocalDateValue">
     <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsLocalDate>
+    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsISO>
   </form>
 
   <pre>

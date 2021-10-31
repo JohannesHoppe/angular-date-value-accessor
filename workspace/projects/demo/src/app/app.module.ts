@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ISODateValueAccessorModule } from 'projects/date-value-accessor/src/lib/iso-date-value-accessor.module';
 import { DateValueAccessorModule, LocalDateValueAccessorModule } from 'projects/date-value-accessor/src/public-api';
 
 import { AppComponent } from './app.component';
@@ -31,7 +32,8 @@ import { ExplanationLocalDateValueAccessorComponent } from './shared/explanation
     FormsModule,
     ReactiveFormsModule,
     DateValueAccessorModule,
-    LocalDateValueAccessorModule
+    LocalDateValueAccessorModule,
+    ISODateValueAccessorModule
   ],
   bootstrap: [AppComponent]
 })

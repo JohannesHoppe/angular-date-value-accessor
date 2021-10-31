@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReleaseWithIsoString } from '../../shared/release-with-iso-string';
 
 @Component({
-  selector: 'app-reactive-form',
+  selector: 'app-reactive-form-iso',
   templateUrl: './reactive-form-iso.component.html'
 })
 export class ReactiveFormIsoComponent implements OnInit {

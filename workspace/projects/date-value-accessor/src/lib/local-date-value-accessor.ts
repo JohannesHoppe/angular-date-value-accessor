@@ -1,26 +1,27 @@
 import { Directive, ElementRef, HostListener, Renderer2, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export const LOCAL_DATE_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => LocalDateValueAccessor),
-  multi: true
-};
-
 /**
  * The accessor for writing a value and listening to changes on a date input element
  *
  *  ### Example
  *  `<input type="date" name="myBirthday" ngModel useValueAsLocalDate>`
+ *
+ * See also:
+ * What is the correct way to set and get HTMLInputElement.valueAsDate using local Dates?
+ * https://stackoverflow.com/a/53033442
  */
 @Directive({
   selector: '[useValueAsLocalDate]',
-  providers: [LOCAL_DATE_VALUE_ACCESSOR]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => LocalDateValueAccessor),
+      multi: true
+    }
+  ]
 })
-// tslint:disable-next-line: directive-class-suffix
 export class LocalDateValueAccessor implements ControlValueAccessor {
-
-  onChange: any = () => {};
 
   @HostListener('input', ['$event.target.valueAsDate']) onInput = (date: Date) => {
     let selectedDate: Date | null = null;
@@ -30,6 +31,8 @@ export class LocalDateValueAccessor implements ControlValueAccessor {
     }
     this.onChange(selectedDate);
   }
+  onChange: any = () => {};
+
   @HostListener('blur', []) onTouched = () => { };
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
@@ -42,13 +45,15 @@ export class LocalDateValueAccessor implements ControlValueAccessor {
     this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', utcDate);
   }
 
-  registerOnChange(fn: (_: any) => void): void { this.onChange = fn; }
-  registerOnTouched(fn: () => void): void { this.onTouched = fn; }
+  registerOnChange(fn: (_: any) => void): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
 
   setDisabledState(isDisabled: boolean): void {
     this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', isDisabled);
   }
 }
-
-// Use Local Dates with html input type date
-// https://stackoverflow.com/questions/53032953/what-is-the-correct-way-to-set-and-get-htmlinputelement-valueasdate-using-local

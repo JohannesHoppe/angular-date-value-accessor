@@ -16,7 +16,7 @@ label {
 input {
   display: block;
   margin: 5px;
-  width: 200px;
+  width: 220px;
 }
 
 app-root {
@@ -26,18 +26,20 @@ app-root {
 
 pre {
   background-color: #f7f7f7;
-  width: 380px;
+  width: 400px;
   padding: 12px;
 }
 
-app-template-driven-form {
+app-template-driven-form,
+app-template-driven-form-iso {
   float: left;
-  width: 500px;
+  width: 520px;
 }
 
-app-reactive-form {
+app-reactive-form,
+app-reactive-form-iso {
   float: left;
-  width: 500px;
+  width: 520px;
 }
 
 summary {

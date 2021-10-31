@@ -1,13 +1,11 @@
 <h1>Template-Driven Forms</h1>
 
-<app-explanation-date-value-accessor></app-explanation-date-value-accessor>
-
 <div class="good">
   <h2>DateValueAccessor</h2>
 
   <form>
     <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoIsoDateValue.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoIsoDateValue.releaseDate" useValueAsDate>
+    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoIsoDateValue.releaseDate" useValueAsISO>
   </form>
 
 <pre>
@@ -30,14 +28,12 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 
 <hr>
 
-<app-explanation-local-date-value-accessor></app-explanation-local-date-value-accessor>
-
 <div class="good">
   <h2>LocalDateValueAccessor</h2>
 
   <form>
     <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoIsoLocalDateValue.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoIsoLocalDateValue.releaseDate" useValueAsLocalDate>
+    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoIsoLocalDateValue.releaseDate" useValueAsISO>
   </form>
 
   <pre>
