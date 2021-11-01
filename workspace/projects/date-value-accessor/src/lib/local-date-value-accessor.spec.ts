@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { dispatchInputEvent } from './spec-utils';
 import { LocalDateValueAccessor } from './local-date-value-accessor';
+import { dispatchInputEvent } from './spec-utils';
 
 @Component({
   template: `

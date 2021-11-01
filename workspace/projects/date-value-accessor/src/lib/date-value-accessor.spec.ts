@@ -11,19 +11,22 @@ import { dispatchInputEvent } from './spec-utils';
   <form>
     <input type="date" name="normalInput" [(ngModel)]="testDate1">
     <input type="date" name="fixedInput" [(ngModel)]="testDate2" useValueAsDate>
+    <input type="date" name="fixedInputFalsy" [(ngModel)]="testDate3" useValueAsDate>
   </form>`
 })
 export class TestFormComponent {
   testDate1: Date | string;
   testDate2: Date;
+  testDate3: Date;
 
   constructor() {
     this.testDate1 = new Date('2019-01-01'); // Create UTC Date
     this.testDate2 = new Date('2020-01-01'); // Create UTC Date
+    this.testDate3 = null;
   }
 }
 
-describe('DateValueAccessor', () => {
+describe('DateValueAccessor (template-driven forms)', () => {
 
   let fixture: ComponentFixture<TestFormComponent>;
 
@@ -78,6 +81,16 @@ describe('DateValueAccessor', () => {
       expect(fixture.componentInstance.testDate2.getUTCFullYear()).toBe(2020);
       expect(fixture.componentInstance.testDate2.getUTCHours()).toBe(0);
       expect(fixture.componentInstance.testDate2.getUTCMinutes()).toBe(0);
+    }));
+
+    it('should not break on initial falsy values', waitForAsync(() => {
+      const fixedInputFalsy = fixture.debugElement.query(By.css('input[name=fixedInputFalsy]'));
+      expect(fixedInputFalsy.nativeElement.value).toBe('');
+    }));
+
+    it('should populate NULL for falsy values on change', waitForAsync(() => {
+      dispatchInputEvent(fixedInput.nativeElement, null);
+      expect(fixture.componentInstance.testDate2).toEqual(null);
     }));
   });
 });

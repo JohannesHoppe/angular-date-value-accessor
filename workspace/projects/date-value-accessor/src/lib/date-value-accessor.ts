@@ -25,10 +25,15 @@ export class DateValueAccessor implements ControlValueAccessor {
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
   writeValue(value: Date): void {
-    if (!value) {
-      this.renderer.setProperty(this.elementRef.nativeElement, 'value', null);
-      return;
-    }
+    // everything still works as expected, what was the reason for
+    // https://github.com/JohannesHoppe/angular-date-value-accessor/issues/3
+    // https://github.com/JohannesHoppe/angular-date-value-accessor/pull/5
+    // ??
+    //
+    // if (!value) {
+    //   this.renderer.setProperty(this.elementRef.nativeElement, 'value', null);
+    //   return;
+    // }
     this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', value);
   }
 

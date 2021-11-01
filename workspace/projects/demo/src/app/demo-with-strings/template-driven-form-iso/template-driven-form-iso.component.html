@@ -1,7 +1,7 @@
 <h1>Template-Driven Forms</h1>
 
 <div class="good">
-  <h2>DateValueAccessor</h2>
+  <h2>ISODateValueAccessor</h2>
 
   <form>
     <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoIsoDateValue.version">
@@ -16,7 +16,7 @@
 &lt;input type=&quot;date&quot;
        name=&quot;releaseDate&quot;
        [(ngModel)]=&quot;demoIsoDateValue.releaseDate&quot;
-       <b>useValueAsDate</b>&gt;
+       <b>useValueAsISO</b>&gt;
 </pre>
 
 <pre>
@@ -28,9 +28,10 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 
 <hr>
 
-<div class="good">
-  <h2>LocalDateValueAccessor</h2>
 
+<div class="good">
+  <h2>ISOLocalDateValueAccessor</h2>
+<!--
   <form>
     <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoIsoLocalDateValue.version">
     <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoIsoLocalDateValue.releaseDate" useValueAsISO>
@@ -44,7 +45,7 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 &lt;input type=&quot;date&quot;
        name=&quot;releaseDate&quot;
        [(ngModel)]=&quot;demoIsoLocalDateValue.releaseDate&quot;
-       <b>useValueAsLocalDate</b>&gt;
+       <b>useValueAsLocalISO</b>&gt;
 </pre>
 
 <pre>
@@ -52,11 +53,11 @@ DEBUG:
 {{ demoIsoLocalDateValue | json }}
 typeof(releaseDate): {{ typeof(demoIsoLocalDateValue.releaseDate) }}
 </pre>
+-->
+TODO
 </div>
 
 <hr>
-
-<app-explanation-default-value-accessor></app-explanation-default-value-accessor>
 
 <div class="bad">
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>

@@ -1,7 +1,7 @@
 <h1>Reactive Forms</h1>
 
 <div class="good">
-  <h2>DateValueAccessor</h2>
+  <h2>ISODateValueAccessor</h2>
 
   <form [formGroup]="myFormDateValue">
     <label>Version:</label>     <input type="text" formControlName="version">
@@ -14,7 +14,7 @@
 
 &lt;input type=&quot;date&quot;
   formControlName=&quot;releaseDate&quot;
-  <b>useValueAsDate</b>&gt;
+  <b>useValueAsISO</b>&gt;
 </pre>
 
 <pre>
@@ -28,7 +28,7 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 
 <div class="good">
   <h2>LocalDateValueAccessor</h2>
-
+<!--
   <form [formGroup]="myFormLocalDateValue">
     <label>Version:</label>     <input type="text" formControlName="version">
     <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsISO>
@@ -40,7 +40,7 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 
 &lt;input type=&quot;date&quot;
   formControlName=&quot;releaseDate&quot;
-  <b>useValueAsLocalDate</b>&gt;
+  <b>useValueAsLocalISO</b>&gt;
 </pre>
 
 <pre>
@@ -48,11 +48,11 @@ DEBUG:
 {{ demoIsoLocalDateValue | json }}
 typeof(releaseDate): {{ typeof(demoIsoLocalDateValue.releaseDate) }}
 </pre>
+-->
+TODO
 </div>
 
 <hr>
-
-<app-explanation-default-value-accessor></app-explanation-default-value-accessor>
 
 <div class="bad">
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
