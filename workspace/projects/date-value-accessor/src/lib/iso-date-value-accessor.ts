@@ -1,41 +1,43 @@
 import { Directive, ElementRef, forwardRef, HostBinding, HostListener, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+//
+
 /**
  * The accessor for writing a iso-formatted string value and listening to changes on a date input element
  *
  *  ### Example
- *  `<input type="date" name="myBirthday" ngModel useValueAsISO>`
+ *  `<input type="date" name="myBirthday" ngModel useValueAsIso>`
  */
 @Directive({
-  selector: '[useValueAsISO]',
+  selector: '[useValueAsIso]',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ISODateValueAccessor),
+      useExisting: forwardRef(() => IsoDateValueAccessor),
       multi: true
     }
   ]
 })
-export class ISODateValueAccessor implements ControlValueAccessor {
+export class IsoDateValueAccessor implements ControlValueAccessor {
 
-  @HostListener('input', ['$event.target.valueAsNumber']) onInput(value: number) {
-    this.onChange(new Date(value).toISOString());
+  @HostListener('input', ['$event.target.valueAsDate']) onInput = (date?: Date) => {
+    const isoString = date ? date.toISOString() : null;
+    this.onChange(isoString);
   }
-  onChange = (_: string) => {};
+  onChange: any = () => {};
 
   @HostListener('blur', []) onTouched = () => { };
 
-  @HostBinding('valueAsNumber') inputValue?: number;
+  @HostBinding('valueAsDate') valueAsDate?: Date;
+  @HostBinding('disabled') disabled: boolean;
 
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
-
-  writeValue(isoString: string) {
-    const value = isoString ? new Date(isoString).getTime() : undefined;
-    this.inputValue = value;
+  writeValue(isoString?: string) {
+    const date = isoString ? new Date(isoString) : null;
+    this.valueAsDate = date;
   }
 
-  registerOnChange(fn: (value: string) => void) {
+  registerOnChange(fn: (_: any) => void) {
     this.onChange = fn;
   }
 
@@ -44,6 +46,6 @@ export class ISODateValueAccessor implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', isDisabled);
+    this.disabled = isDisabled;
   }
 }

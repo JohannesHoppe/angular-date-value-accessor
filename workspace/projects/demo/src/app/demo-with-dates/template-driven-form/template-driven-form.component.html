@@ -6,9 +6,14 @@
   <h2>DateValueAccessor</h2>
 
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoDateValue.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoDateValue.releaseDate" useValueAsDate>
+    <label>Version:</label>
+    <input type="text" name="version" [(ngModel)]="demoDateValue.version">
+
+    <label>Release date:</label>
+    <input type="date" name="releaseDate" [(ngModel)]="demoDateValue.releaseDate" [disabled]="demoDateValueDisabled" useValueAsDate>
   </form>
+
+  <button (click)="demoDateValueDisabled = !demoDateValueDisabled">Toggle disabled state</button>
 
 <pre>
 &lt;input type=&quot;text&quot;
@@ -36,9 +41,14 @@ typeof(releaseDate): {{ typeof(demoDateValue.releaseDate) }}
   <h2>LocalDateValueAccessor</h2>
 
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoLocalDateValue.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoLocalDateValue.releaseDate" useValueAsLocalDate>
+    <label>Version:</label>
+    <input type="text" name="version" [(ngModel)]="demoLocalDateValue.version">
+
+    <label>Release date:</label>
+    <input type="date" name="releaseDate" [(ngModel)]="demoLocalDateValue.releaseDate" [disabled]="demoLocalDateValueDisabled" useValueAsLocalDate>
   </form>
+
+  <button (click)="demoLocalDateValueDisabled = !demoLocalDateValueDisabled">Toggle disabled state</button>
 
   <pre>
 &lt;input type=&quot;text&quot;
@@ -66,9 +76,14 @@ typeof(releaseDate): {{ typeof(demoLocalDateValue.releaseDate) }}
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoDefault.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoDefault.releaseDate">
+    <label>Version:</label>
+    <input type="text" name="version" [(ngModel)]="demoDefault.version">
+
+    <label>Release date:</label>
+    <input type="date" name="releaseDate" [(ngModel)]="demoDefault.releaseDate" [disabled]="demoLocalDateValueDisabled">
   </form>
+
+  <button (click)="demoLocalDateValueDisabled = !demoLocalDateValueDisabled">Toggle disabled state</button>
 
 <pre>
 &lt;input type=&quot;text&quot;

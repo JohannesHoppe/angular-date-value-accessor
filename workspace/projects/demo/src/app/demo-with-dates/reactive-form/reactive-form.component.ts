@@ -13,8 +13,8 @@ export class ReactiveFormComponent implements OnInit {
   demoDefault: Release;
 
   myFormDateValue: FormGroup;
-  myFormDefault: FormGroup;
   myFormLocalDateValue: FormGroup;
+  myFormDefault: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.demoDateValue = new Release('2.0.0', new Date('2020-01-01')); // UTC
@@ -41,6 +41,15 @@ export class ReactiveFormComponent implements OnInit {
     this.myFormDateValue.valueChanges.subscribe(values => this.demoDateValue = new Release(values.version, values.releaseDate));
     this.myFormLocalDateValue.valueChanges.subscribe(values => this.demoLocalDateValue = new Release(values.version, values.releaseDate));
     this.myFormDefault.valueChanges.subscribe(values => this.demoDefault = new Release(values.version, values.releaseDate));
+  }
+
+  toggle(formGroup: FormGroup) {
+    const control = formGroup.get('releaseDate');
+    if (control.enabled) {
+      control.disable();
+    } else {
+      control.enable();
+    }
   }
 
   typeof(obj: any) {

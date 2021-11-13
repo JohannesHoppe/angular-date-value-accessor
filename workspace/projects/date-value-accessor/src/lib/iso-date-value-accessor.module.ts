@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ISODateValueAccessor } from './iso-date-value-accessor';
+import { IsoDateValueAccessor } from './iso-date-value-accessor';
 
 @NgModule({
-  declarations: [ISODateValueAccessor],
-  exports: [ISODateValueAccessor]
+  declarations: [IsoDateValueAccessor],
+  exports: [IsoDateValueAccessor]
 })
-export class ISODateValueAccessorModule { }
+export class IsoDateValueAccessorModule { }

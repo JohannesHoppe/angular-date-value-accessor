@@ -1,11 +1,11 @@
 <h1>Reactive Forms</h1>
 
 <div class="good">
-  <h2>ISODateValueAccessor</h2>
+  <h2>IsoDateValueAccessor</h2>
 
   <form [formGroup]="myFormDateValue">
     <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsISO>
+    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsIso>
   </form>
 
 <pre>
@@ -14,7 +14,7 @@
 
 &lt;input type=&quot;date&quot;
   formControlName=&quot;releaseDate&quot;
-  <b>useValueAsISO</b>&gt;
+  <b>useValueAsIso</b>&gt;
 </pre>
 
 <pre>
@@ -31,7 +31,7 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 <!--
   <form [formGroup]="myFormLocalDateValue">
     <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsISO>
+    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsIso>
   </form>
 
   <pre>
@@ -40,7 +40,7 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 
 &lt;input type=&quot;date&quot;
   formControlName=&quot;releaseDate&quot;
-  <b>useValueAsLocalISO</b>&gt;
+  <b>useValueAsLocalIso</b>&gt;
 </pre>
 
 <pre>

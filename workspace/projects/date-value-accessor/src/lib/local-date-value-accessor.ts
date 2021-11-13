@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Renderer2, forwardRef } from '@angular/core';
+import { Directive, ElementRef, HostListener, Renderer2, forwardRef, HostBinding } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
@@ -23,26 +23,22 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class LocalDateValueAccessor implements ControlValueAccessor {
 
-  @HostListener('input', ['$event.target.valueAsDate']) onInput = (date: Date) => {
-    let selectedDate: Date | null = null;
-    if (date) {
-      // Create LOCAL Date, time is set to 00:00 in LOCAL time
-      selectedDate = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());;
-    }
-    this.onChange(selectedDate);
+  @HostListener('input', ['$event.target.valueAsDate']) onInput = (date?: Date) => {
+    // convert to LOCAL Date, time is set to 00:00 in LOCAL time
+    const localDate = date ? new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) : undefined;
+    this.onChange(localDate);
   }
   onChange: any = () => {};
 
   @HostListener('blur', []) onTouched = () => { };
 
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
+  @HostBinding('valueAsDate') valueAsDate?: Date;
+  @HostBinding('disabled') disabled: boolean;
 
-  writeValue(date: Date): void {
-    // Create UTC Date, time is set to 00:00 in UTC time
-    const utcDate: Date = date ?
-      new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())) :
-      null;
-    this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', utcDate);
+  writeValue(date?: Date): void {
+    // convert to UTC Date, time is set to 00:00 in UTC time
+    const utcDate = date ? new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())) : undefined;
+    this.valueAsDate = utcDate;
   }
 
   registerOnChange(fn: (_: any) => void): void {
@@ -54,6 +50,6 @@ export class LocalDateValueAccessor implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', isDisabled);
+    this.disabled = isDisabled;
   }
 }

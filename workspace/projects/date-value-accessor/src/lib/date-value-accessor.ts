@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Renderer2, forwardRef } from '@angular/core';
+import { Directive, forwardRef, HostBinding, HostListener } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
@@ -22,19 +22,11 @@ export class DateValueAccessor implements ControlValueAccessor {
   @HostListener('input', ['$event.target.valueAsDate']) onChange = (_: any) => { };
   @HostListener('blur', []) onTouched = () => { };
 
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
+  @HostBinding('valueAsDate') valueAsDate?: Date;
+  @HostBinding('disabled') disabled: boolean;
 
-  writeValue(value: Date): void {
-    // everything still works as expected, what was the reason for
-    // https://github.com/JohannesHoppe/angular-date-value-accessor/issues/3
-    // https://github.com/JohannesHoppe/angular-date-value-accessor/pull/5
-    // ??
-    //
-    // if (!value) {
-    //   this.renderer.setProperty(this.elementRef.nativeElement, 'value', null);
-    //   return;
-    // }
-    this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', value);
+  writeValue(date?: Date): void {
+    this.valueAsDate = date;
   }
 
   registerOnChange(fn: (_: any) => void): void {
@@ -46,6 +38,6 @@ export class DateValueAccessor implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', isDisabled);
+    this.disabled = isDisabled;
   }
 }

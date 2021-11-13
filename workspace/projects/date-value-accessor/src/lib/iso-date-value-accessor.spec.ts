@@ -3,26 +3,26 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { dispatchInputEvent } from './spec-utils';
-import { ISODateValueAccessor } from './iso-date-value-accessor';
+import { IsoDateValueAccessor } from './iso-date-value-accessor';
 
 @Component({
   template: `
     <form>
-      <input type="date" name="fixedInput" [formControl]="control" useValueAsISO>
+      <input type="date" name="fixedInput" [formControl]="control" useValueAsIso>
     </form>`
 })
 export class TestFormComponent {
   control = new FormControl(new Date('2021-10-25').toISOString());
 }
 
-describe('ISODateValueAccessor', () => {
+describe('IsoDateValueAccessor', () => {
 
   let fixture: ComponentFixture<TestFormComponent>;
   let component: TestFormComponent;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TestFormComponent, ISODateValueAccessor],
+      declarations: [TestFormComponent, IsoDateValueAccessor],
       imports: [ReactiveFormsModule]
     })
     .compileComponents();
@@ -38,7 +38,7 @@ describe('ISODateValueAccessor', () => {
     fixture.whenStable();
   }));
 
-  describe('with the "useValueAsISO" directive', () => {
+  describe('with the "useValueAsIso" directive', () => {
 
     let fixedInput: HTMLInputElement;
     beforeEach(() => {
