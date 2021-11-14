@@ -1,12 +1,19 @@
 <h1>Reactive Forms</h1>
 
+<app-explanation-iso-date-value-accessor></app-explanation-iso-date-value-accessor>
+
 <div class="good">
   <h2>IsoDateValueAccessor</h2>
 
   <form [formGroup]="myFormDateValue">
-    <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsIso>
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate" useValueAsIso>
   </form>
+
+  <button (click)="toggle(myFormDateValue)">Toggle disabled state</button>
 
 <pre>
 &lt;input type=&quot;text&quot;

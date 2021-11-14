@@ -2,7 +2,7 @@ import { Directive, forwardRef, HostBinding, HostListener } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * The accessor for writing a date object value and listening to changes on a date input element
+ * The accessor for writing a date object value and listening to changes on a date input element.
  *
  *  ### Example
  *  `<input type="date" name="myBirthday" ngModel useValueAsDate>`

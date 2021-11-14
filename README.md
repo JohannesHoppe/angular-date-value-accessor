@@ -141,8 +141,12 @@ Depending on the requirements of your application you can choose from these Valu
 
 ## DateValueAccessor (UTC)
 
-The `DateValueAccessor` operates in UTC (Coordinated Universal Time).
-The HTML date input will read the UTC representation of the Date Object. When you select a date it will output an UTC date with the time set to 00:00 (UTC).
+The original `DateValueAccessor` operates in UTC (Coordinated Universal Time).
+The HTML date input will use the UTC representation of a given Date Object.
+When you select a date it will output an UTC date with the time set to 00:00 (UTC).
+
+**If you are unsure what to use, use the `LocalDateValueAccessor` and not the `DateValueAccessor`.**
+**Most users will expect the input field to correlate to their local clock.**
 
 Import the module via NgModule:
 
@@ -163,9 +167,9 @@ Now you can apply the `useValueAsDate` to your date input controls.
 
 ## LocalDateValueAccessor (Local Time)
 
-If you prefer to work with Local Dates then you can use the `LocalDateValueAccessorModule`.
-
-The HTML date input will read the Local Time representation of the Date Object. When you select a date it will output a Local Date with the time set to 00:00 (Local Time).
+The improved `LocalDateValueAccessor` operates in your Local Time.
+The HTML date input will use the Local Time representation of a given the Date Object.
+When you select a date it will output a Local Date with the time set to 00:00 (Local Time).
 
 Import the module via NgModule:
 
@@ -189,8 +193,12 @@ Now you can apply the `useValueAsLocalDate` to your date input controls.
 
 ## IsoDateValueAccessor (UTC as ISO 8601 string)
 
-This additional directive gets and sets ISO 8601 formatted date strings in HTML date inputs.
+This directive gets and sets ISO 8601 formatted date strings in HTML date inputs.
 The handling of the dates is the same as for the `DateValueAccessor`.
+
+The `IsoDateValueAccessor` operates in UTC (Coordinated Universal Time).
+The HTML date input will use the UTC representation of a given ISO 8601 formatted date string.
+When you select a date it will output an ISO-formatted string with the time set to 00:00 (UTC).
 
 Import the module via NgModule:
 
@@ -211,8 +219,14 @@ Now you can apply the `useValueAsIso` to your date input controls.
 
 ## LocalIsoDateValueAccessor (Local Time as ISO 8601 string)
 
-This additional directive gets and sets ISO 8601 formatted date strings in HTML date inputs.
+This directive gets and sets ISO 8601 formatted date strings in HTML date inputs.
 The handling of the dates is the same as for the `LocalDateValueAccessor`.
+
+The `LocalIsoDateValueAccessor` operates in your Local Time.
+The HTML date input will use the Local Time representation of a given ISO 8601 formatted date string.
+When you select a date it will output an ISO-formatted string with a time that equals to 00:00 (Local Time).<br>
+<br>
+Note: The timezone of the outputted string is always zero UTC offset, as denoted by the suffix "Z".
 
 Import the module via NgModule:
 

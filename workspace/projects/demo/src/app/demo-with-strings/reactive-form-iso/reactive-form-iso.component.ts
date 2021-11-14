@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { ReleaseWithIsoString } from '../../shared/release-with-iso-string';
 
 @Component({
@@ -41,6 +42,15 @@ export class ReactiveFormIsoComponent implements OnInit {
     this.myFormDateValue.valueChanges.subscribe(values => this.demoIsoDateValue = new ReleaseWithIsoString(values.version, values.releaseDate));
     this.myFormLocalDateValue.valueChanges.subscribe(values => this.demoIsoLocalDateValue = new ReleaseWithIsoString(values.version, values.releaseDate));
     this.myFormDefault.valueChanges.subscribe(values => this.demoIsoDefault = new ReleaseWithIsoString(values.version, values.releaseDate));
+  }
+
+  toggle(formGroup: FormGroup) {
+    const control = formGroup.get('releaseDate');
+    if (control.enabled) {
+      control.disable();
+    } else {
+      control.enable();
+    }
   }
 
   typeof(obj: any) {
