@@ -80,10 +80,10 @@ typeof(releaseDate): {{ typeof(demoLocalDateValue.releaseDate) }}
     <input type="text" name="version" [(ngModel)]="demoDefault.version">
 
     <label>Release date:</label>
-    <input type="date" name="releaseDate" [(ngModel)]="demoDefault.releaseDate" [disabled]="demoLocalDateValueDisabled">
+    <input type="date" name="releaseDate" [(ngModel)]="demoDefault.releaseDate" [disabled]="demoDefaultDisabled">
   </form>
 
-  <button (click)="demoLocalDateValueDisabled = !demoLocalDateValueDisabled">Toggle disabled state</button>
+  <button (click)="demoDefaultDisabled = !demoDefaultDisabled">Toggle disabled state</button>
 
 <pre>
 &lt;input type=&quot;text&quot;

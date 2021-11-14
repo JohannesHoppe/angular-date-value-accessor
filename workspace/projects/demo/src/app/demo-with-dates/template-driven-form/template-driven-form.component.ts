@@ -17,7 +17,7 @@ export class TemplateDrivenFormComponent {
 
   constructor() {
     this.demoDateValue = new Release('2.0.0', new Date('2020-01-01')); // UTC
-    this.demoLocalDateValue = new Release('3.0.0', new Date(2020, 0, 1));   // with offset
+    this.demoLocalDateValue = new Release('3.0.0', new Date(2020, 0, 1)); // with offset
     this.demoDefault = new Release('1.5.8', new Date('2016-07-22')); // UTC
   }
 

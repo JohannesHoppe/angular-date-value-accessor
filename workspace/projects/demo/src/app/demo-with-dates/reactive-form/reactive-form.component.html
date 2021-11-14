@@ -72,8 +72,11 @@ typeof(releaseDate): {{ typeof(demoLocalDateValue.releaseDate) }}
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
   <form [formGroup]="myFormDefault">
-    <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Release date:</label> <input type="date" formControlName="releaseDate">
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate">
   </form>
 
   <button (click)="toggle(myFormDefault)">Toggle disabled state</button>

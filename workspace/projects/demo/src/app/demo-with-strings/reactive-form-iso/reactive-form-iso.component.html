@@ -33,13 +33,20 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 
 <hr>
 
+<app-explanation-local-iso-date-value-accessor></app-explanation-local-iso-date-value-accessor>
+
 <div class="good">
-  <h2>LocalDateValueAccessor</h2>
-<!--
+  <h2>LocalIsoDateValueAccessor</h2>
+
   <form [formGroup]="myFormLocalDateValue">
-    <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Release date:</label> <input type="date" formControlName="releaseDate" useValueAsIso>
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate" useValueAsLocalIso>
   </form>
+
+  <button (click)="toggle(myFormLocalDateValue)">Toggle disabled state</button>
 
   <pre>
 &lt;input type=&quot;text&quot;
@@ -52,11 +59,9 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 
 <pre>
 DEBUG:
-{{ demoIsoLocalDateValue | json }}
-typeof(releaseDate): {{ typeof(demoIsoLocalDateValue.releaseDate) }}
+{{ demoLocalIsoDateValue | json }}
+typeof(releaseDate): {{ typeof(demoLocalIsoDateValue.releaseDate) }}
 </pre>
--->
-TODO
 </div>
 
 <hr>
@@ -65,9 +70,14 @@ TODO
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
   <form [formGroup]="myFormDefault">
-    <label>Version:</label>     <input type="text" formControlName="version">
-    <label>Release date:</label> <input type="date" formControlName="releaseDate">
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate">
   </form>
+
+  <button (click)="toggle(myFormDefault)">Toggle disabled state</button>
 
 <pre>
 &lt;input type=&quot;text&quot;

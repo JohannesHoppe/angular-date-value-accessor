@@ -10,7 +10,7 @@ import { ReleaseWithIsoString } from '../../shared/release-with-iso-string';
 export class ReactiveFormIsoComponent implements OnInit {
 
   demoIsoDateValue: ReleaseWithIsoString;
-  demoIsoLocalDateValue: ReleaseWithIsoString;
+  demoLocalIsoDateValue: ReleaseWithIsoString;
   demoIsoDefault: ReleaseWithIsoString;
 
   myFormDateValue: FormGroup;
@@ -19,7 +19,7 @@ export class ReactiveFormIsoComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.demoIsoDateValue = new ReleaseWithIsoString('2.0.0', new Date('2020-01-01').toISOString()); // UTC
-    this.demoIsoLocalDateValue = new ReleaseWithIsoString('3.0.0', new Date(2020, 0, 1).toISOString()); // with offset
+    this.demoLocalIsoDateValue = new ReleaseWithIsoString('3.0.0', new Date(2020, 0, 1).toISOString()); // with offset
     this.demoIsoDefault = new ReleaseWithIsoString('1.5.8', new Date('2016-07-22').toISOString()); // UTC
   }
 
@@ -30,8 +30,8 @@ export class ReactiveFormIsoComponent implements OnInit {
     });
 
     this.myFormLocalDateValue = this.fb.group({
-      version:     [this.demoIsoLocalDateValue.version],
-      releaseDate: [this.demoIsoLocalDateValue.releaseDate]
+      version:     [this.demoLocalIsoDateValue.version],
+      releaseDate: [this.demoLocalIsoDateValue.releaseDate]
     });
 
     this.myFormDefault = this.fb.group({
@@ -40,7 +40,7 @@ export class ReactiveFormIsoComponent implements OnInit {
     });
 
     this.myFormDateValue.valueChanges.subscribe(values => this.demoIsoDateValue = new ReleaseWithIsoString(values.version, values.releaseDate));
-    this.myFormLocalDateValue.valueChanges.subscribe(values => this.demoIsoLocalDateValue = new ReleaseWithIsoString(values.version, values.releaseDate));
+    this.myFormLocalDateValue.valueChanges.subscribe(values => this.demoLocalIsoDateValue = new ReleaseWithIsoString(values.version, values.releaseDate));
     this.myFormDefault.valueChanges.subscribe(values => this.demoIsoDefault = new ReleaseWithIsoString(values.version, values.releaseDate));
   }
 

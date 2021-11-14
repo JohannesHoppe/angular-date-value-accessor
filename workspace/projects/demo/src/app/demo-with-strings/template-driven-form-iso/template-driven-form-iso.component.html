@@ -1,12 +1,19 @@
 <h1>Template-Driven Forms</h1>
 
+<app-explanation-iso-date-value-accessor></app-explanation-iso-date-value-accessor>
+
 <div class="good">
   <h2>IsoDateValueAccessor</h2>
 
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoIsoDateValue.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoIsoDateValue.releaseDate" useValueAsIso>
+    <label>Version:</label>
+    <input type="text" name="version" [(ngModel)]="demoIsoDateValue.version">
+
+    <label>Release date:</label>
+    <input type="date" name="releaseDate" [(ngModel)]="demoIsoDateValue.releaseDate" [disabled]="demoIsoDateValueDisabled" useValueAsIso>
   </form>
+
+  <button (click)="demoIsoDateValueDisabled = !demoIsoDateValueDisabled">Toggle disabled state</button>
 
 <pre>
 &lt;input type=&quot;text&quot;
@@ -28,33 +35,38 @@ typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
 
 <hr>
 
+<app-explanation-local-iso-date-value-accessor></app-explanation-local-iso-date-value-accessor>
+
 
 <div class="good">
-  <h2>IsoLocalDateValueAccessor</h2>
-<!--
+  <h2>LocalIsoDateValueAccessor</h2>
+
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoIsoLocalDateValue.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoIsoLocalDateValue.releaseDate" useValueAsIso>
+    <label>Version:</label>
+    <input type="text" name="version" [(ngModel)]="demoLocalIsoDateValue.version">
+
+    <label>Release date:</label>
+    <input type="date" name="releaseDate" [(ngModel)]="demoLocalIsoDateValue.releaseDate" [disabled]="demoLocalIsoDateValueDisabled" useValueAsLocalIso>
   </form>
+
+  <button (click)="demoLocalIsoDateValueDisabled = !demoLocalIsoDateValueDisabled">Toggle disabled state</button>
 
   <pre>
 &lt;input type=&quot;text&quot;
        name=&quot;version&quot;
-       [(ngModel)]=&quot;demoIsoLocalDateValue.version&quot;&gt;
+       [(ngModel)]=&quot;demoLocalIsoDateValue.version&quot;&gt;
 
 &lt;input type=&quot;date&quot;
        name=&quot;releaseDate&quot;
-       [(ngModel)]=&quot;demoIsoLocalDateValue.releaseDate&quot;
+       [(ngModel)]=&quot;demoLocalIsoDateValue.releaseDate&quot;
        <b>useValueAsLocalIso</b>&gt;
 </pre>
 
 <pre>
 DEBUG:
-{{ demoIsoLocalDateValue | json }}
-typeof(releaseDate): {{ typeof(demoIsoLocalDateValue.releaseDate) }}
+{{ demoLocalIsoDateValue | json }}
+typeof(releaseDate): {{ typeof(demoLocalIsoDateValue.releaseDate) }}
 </pre>
--->
-TODO
 </div>
 
 <hr>
@@ -63,9 +75,14 @@ TODO
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
   <form>
-    <label>Version:</label>     <input type="text" name="version" [(ngModel)]="demoIsoDefault.version">
-    <label>Release date:</label> <input type="date" name="releaseDate" [(ngModel)]="demoIsoDefault.releaseDate">
+    <label>Version:</label>
+    <input type="text" name="version" [(ngModel)]="demoIsoDefault.version">
+
+    <label>Release date:</label>
+    <input type="date" name="releaseDate" [(ngModel)]="demoIsoDefault.releaseDate" [disabled]="demoIsoDefaultDisabled">
   </form>
+
+  <button (click)="demoIsoDefaultDisabled = !demoIsoDefaultDisabled">Toggle disabled state</button>
 
 <pre>
 &lt;input type=&quot;text&quot;
