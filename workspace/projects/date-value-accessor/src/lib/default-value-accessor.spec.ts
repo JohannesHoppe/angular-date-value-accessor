@@ -20,11 +20,11 @@ describe('DefaultValueAccessor (template-driven forms)', () => {
   setupTemplateDrivenForms(c, TestFormComponent);
 
   it('should NOT fix date input controls', () => {
-    expect(c.inputElement.nativeElement.value).toBe('');
+    expect(c.inputElement.value).toBe('');
   });
 
   it('should populate simple strings on change', waitForAsync(() => {
-    dispatchInputEvent(c.inputElement.nativeElement, '1984-09-30');
+    dispatchInputEvent(c.inputElement, '1984-09-30');
     expect(c.fixture.componentInstance.testDate).toEqual('1984-09-30');
   }));
 });

@@ -1,7 +1,6 @@
-import { DebugElement, Type } from '@angular/core';
+import { Type } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 export function dispatchInputEvent(inputElement: HTMLInputElement, text: string): void {
@@ -11,7 +10,7 @@ export function dispatchInputEvent(inputElement: HTMLInputElement, text: string)
 
 export interface Context<T> {
   fixture?: ComponentFixture<T>;
-  inputElement?: DebugElement;
+  inputElement?: HTMLInputElement;
 }
 
 export function setupTemplateDrivenForms<TComp, TAcess>(
@@ -40,5 +39,29 @@ export function setupTemplateDrivenForms<TComp, TAcess>(
     context.fixture.whenStable();
   }));
 
-  beforeEach(() => context.inputElement = context.fixture.debugElement.query(By.css('input')));
+  beforeEach(() => context.inputElement = context.fixture.nativeElement.querySelector('input'));
+}
+
+export function setupReactiveForms<TComp, TAcess>(
+  context: Context<TComp>,
+  testComponent: Type<TComp>,
+  acessor?: TAcess) {
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        testComponent,
+        ...(acessor ? [acessor]: [])
+      ],
+      imports: [ReactiveFormsModule]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    context.fixture = TestBed.createComponent(testComponent);
+    context.fixture.detectChanges();
+  });
+
+  beforeEach(() => context.inputElement = context.fixture.nativeElement.querySelector('input'));
 }
