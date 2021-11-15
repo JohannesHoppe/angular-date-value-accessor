@@ -1,10 +1,7 @@
-import { Component, DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 
-import { LocalDateValueAccessor } from './local-date-value-accessor';
-import { dispatchInputEvent } from './spec-utils';
+import { LocalIsoDateValueAccessor } from './local-iso-date-value-accessor';
+import { Context, setupTemplateDrivenForms } from './spec-utils';
 
 @Component({
   template: `
@@ -18,28 +15,8 @@ export class TestFormComponent {
 
 describe('LocalDateValueAccessor (template-driven forms)', () => {
 
-  let fixture: ComponentFixture<TestFormComponent>;
-  let inputElement: DebugElement;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [TestFormComponent, LocalDateValueAccessor],
-      imports: [FormsModule]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TestFormComponent);
-  });
-
-  beforeEach(waitForAsync(() => {
-    // https://stackoverflow.com/questions/39582707/updating-input-html-field-from-within-an-angular-2-test
-    fixture.detectChanges();
-    fixture.whenStable();
-  }));
-
-  beforeEach(() => inputElement = fixture.debugElement.query(By.css('input')));
+  let c: Context<TestFormComponent> = {};
+  setupTemplateDrivenForms(c, TestFormComponent, LocalIsoDateValueAccessor);
 
   // it('should fix date input controls to bind on dates', waitForAsync(() => {
   //   expect(inputElement.nativeElement.value).toBe('2020-12-08');
