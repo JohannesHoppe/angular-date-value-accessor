@@ -1,4 +1,4 @@
-import { Directive, forwardRef, HostBinding, HostListener } from '@angular/core';
+import { Directive, ElementRef, forwardRef, HostListener, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
@@ -22,11 +22,10 @@ export class DateValueAccessor implements ControlValueAccessor {
   @HostListener('input', ['$event.target.valueAsDate']) onChange = (_: any) => { };
   @HostListener('blur', []) onTouched = () => { };
 
-  @HostBinding('valueAsDate') valueAsDate?: Date;
-  @HostBinding('disabled') disabled: boolean;
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
   writeValue(date?: Date): void {
-    this.valueAsDate = date;
+    this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', date);
   }
 
   registerOnChange(fn: (_: any) => void): void {
@@ -38,6 +37,6 @@ export class DateValueAccessor implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', isDisabled);
   }
 }

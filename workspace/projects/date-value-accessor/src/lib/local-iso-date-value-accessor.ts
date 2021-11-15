@@ -1,4 +1,4 @@
-import { Directive, forwardRef, HostBinding, HostListener } from '@angular/core';
+import { Directive, ElementRef, forwardRef, HostBinding, HostListener, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
@@ -33,14 +33,13 @@ export class LocalIsoDateValueAccessor implements ControlValueAccessor {
 
   @HostListener('blur', []) onTouched = () => { };
 
-  @HostBinding('valueAsDate') valueAsDate?: Date;
-  @HostBinding('disabled') disabled: boolean;
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
   writeValue(isoString?: string): void {
     const date = isoString ? new Date(isoString) : null;
     // convert to UTC Date, time is set to 00:00 in UTC time
     const utcDate = date ? new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())) : null;
-    this.valueAsDate = utcDate;
+    this.renderer.setProperty(this.elementRef.nativeElement, 'valueAsDate', utcDate);
   }
 
   registerOnChange(fn: (_: any) => void): void {
@@ -52,6 +51,6 @@ export class LocalIsoDateValueAccessor implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', isDisabled);
   }
 }

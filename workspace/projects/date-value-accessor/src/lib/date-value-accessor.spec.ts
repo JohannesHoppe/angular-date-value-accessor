@@ -41,7 +41,7 @@ describe('DateValueAccessor (template-driven forms)', () => {
 
   beforeEach(() => inputElement = fixture.debugElement.query(By.css('input')));
 
-  fit('should fix date input controls to bind on dates', waitForAsync(() => {
+  it('should fix date input controls to bind on dates', waitForAsync(() => {
     expect(inputElement.nativeElement.value).toBe('2020-01-01');
   }));
 
