@@ -8,16 +8,17 @@ import { IsoDateValueAccessor } from './iso-date-value-accessor';
 @Component({
   template: `
     <form>
-      <input type="date" name="fixedInput" [formControl]="control" useValueAsIso>
+      <input type="date" [formControl]="control" useValueAsIso>
     </form>`
 })
 export class TestFormComponent {
   control = new FormControl(new Date('2021-10-25').toISOString());
 }
 
-describe('IsoDateValueAccessor', () => {
+describe('IsoDateValueAccessor (reactive forms)', () => {
 
   let fixture: ComponentFixture<TestFormComponent>;
+  let inputElement: HTMLInputElement;
   let component: TestFormComponent;
 
   beforeEach(waitForAsync(() => {
@@ -38,26 +39,20 @@ describe('IsoDateValueAccessor', () => {
     fixture.whenStable();
   }));
 
-  describe('with the "useValueAsIso" directive', () => {
+  beforeEach(() => inputElement = fixture.nativeElement.querySelector('input'));
 
-    let fixedInput: HTMLInputElement;
-    beforeEach(() => {
-      fixedInput = fixture.nativeElement.querySelector('input[name=fixedInput]');
-    });
+  it('should reflect changes from the form model to the input', () => {
+    // start value
+    expect(inputElement.value).toBe('2021-10-25');
 
-    it('should reflect changes from the form model to the input', () => {
-      // start value
-      expect(fixedInput.value).toBe('2021-10-25');
+    // changed value
+    component.control.setValue(new Date('2021-07-15').toISOString());
+    fixture.detectChanges();
+    expect(inputElement.value).toBe('2021-07-15');
+  });
 
-      // changed value
-      component.control.setValue(new Date('2021-07-15').toISOString());
-      fixture.detectChanges();
-      expect(fixedInput.value).toBe('2021-07-15');
-    });
-
-    it('should reflect changes from the input to the form model', () => {
-      dispatchInputEvent(fixedInput, '2021-03-22');
-      expect(component.control.value).toBe('2021-03-22T00:00:00.000Z');
-    });
+  it('should reflect changes from the input to the form model', () => {
+    dispatchInputEvent(inputElement, '2021-03-22');
+    expect(component.control.value).toBe('2021-03-22T00:00:00.000Z');
   });
 });

@@ -9,14 +9,15 @@ import { dispatchInputEvent } from './spec-utils';
 @Component({
   template: `
   <form>
-    <input type="date" [(ngModel)]="testDate" name="someName" useValueAsDate>
+    <input type="date" [(ngModel)]="testDate" name="someName">
   </form>`
 })
 export class TestFormComponent {
-  testDate = new Date('2020-01-01'); // Create UTC Date
+  testDate: Date | string = new Date('2019-01-01'); // Create UTC Date
 }
 
-describe('DateValueAccessor (template-driven forms)', () => {
+// just to describe the default behaviour
+describe('DefaultValueAccessor (template-driven forms)', () => {
 
   let fixture: ComponentFixture<TestFormComponent>;
   let inputElement: DebugElement;
@@ -41,18 +42,12 @@ describe('DateValueAccessor (template-driven forms)', () => {
 
   beforeEach(() => inputElement = fixture.debugElement.query(By.css('input')));
 
-  fit('should fix date input controls to bind on dates', waitForAsync(() => {
-    expect(inputElement.nativeElement.value).toBe('2020-01-01');
-  }));
+  it('should NOT fix date input controls', () => {
+    expect(inputElement.nativeElement.value).toBe('');
+  });
 
-  it('should populate UTC dates (instead of strings) on change', waitForAsync(() => {
-    dispatchInputEvent(inputElement.nativeElement, '2020-12-31');
-    expect(fixture.componentInstance.testDate).toEqual(jasmine.any(Date));
-    expect(fixture.componentInstance.testDate).toEqual(new Date('2020-12-31'));
-    expect(fixture.componentInstance.testDate.getUTCDate()).toBe(31);
-    expect(fixture.componentInstance.testDate.getUTCMonth()).toBe(11);
-    expect(fixture.componentInstance.testDate.getUTCFullYear()).toBe(2020);
-    expect(fixture.componentInstance.testDate.getUTCHours()).toBe(0);
-    expect(fixture.componentInstance.testDate.getUTCMinutes()).toBe(0);
+  it('should populate simple strings on change', waitForAsync(() => {
+    dispatchInputEvent(inputElement.nativeElement, '1984-09-30');
+    expect(fixture.componentInstance.testDate).toEqual('1984-09-30');
   }));
 });
