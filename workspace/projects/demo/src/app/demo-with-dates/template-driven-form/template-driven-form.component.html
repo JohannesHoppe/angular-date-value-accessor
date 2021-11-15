@@ -1,0 +1,104 @@
+<h1>Template-Driven Forms</h1>
+
+<app-explanation-date-value-accessor></app-explanation-date-value-accessor>
+
+<div class="good">
+  <h2>DateValueAccessor</h2>
+
+  <form>
+    <label>Version:</label>
+    <input type="text" name="version" [(ngModel)]="demoDateValue.version">
+
+    <label>Release date:</label>
+    <input type="date" name="releaseDate" [(ngModel)]="demoDateValue.releaseDate" [disabled]="demoDateValueDisabled" useValueAsDate>
+  </form>
+
+  <button (click)="demoDateValueDisabled = !demoDateValueDisabled">Toggle disabled state</button>
+
+<pre>
+&lt;input type=&quot;text&quot;
+       name=&quot;version&quot;
+       [(ngModel)]=&quot;demoDateValue.version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+       name=&quot;releaseDate&quot;
+       [(ngModel)]=&quot;demoDateValue.releaseDate&quot;
+       <b>useValueAsDate</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ demoDateValue | json }}
+typeof(releaseDate): {{ typeof(demoDateValue.releaseDate) }}
+</pre>
+</div>
+
+<hr>
+
+<app-explanation-local-date-value-accessor></app-explanation-local-date-value-accessor>
+
+<div class="good">
+  <h2>LocalDateValueAccessor</h2>
+
+  <form>
+    <label>Version:</label>
+    <input type="text" name="version" [(ngModel)]="demoLocalDateValue.version">
+
+    <label>Release date:</label>
+    <input type="date" name="releaseDate" [(ngModel)]="demoLocalDateValue.releaseDate" [disabled]="demoLocalDateValueDisabled" useValueAsLocalDate>
+  </form>
+
+  <button (click)="demoLocalDateValueDisabled = !demoLocalDateValueDisabled">Toggle disabled state</button>
+
+  <pre>
+&lt;input type=&quot;text&quot;
+       name=&quot;version&quot;
+       [(ngModel)]=&quot;demoLocalDateValue.version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+       name=&quot;releaseDate&quot;
+       [(ngModel)]=&quot;demoLocalDateValue.releaseDate&quot;
+       <b>useValueAsLocalDate</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ demoLocalDateValue | json }}
+typeof(releaseDate): {{ typeof(demoLocalDateValue.releaseDate) }}
+</pre>
+</div>
+
+<hr>
+
+<app-explanation-default-value-accessor></app-explanation-default-value-accessor>
+
+<div class="bad">
+  <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
+
+  <form>
+    <label>Version:</label>
+    <input type="text" name="version" [(ngModel)]="demoDefault.version">
+
+    <label>Release date:</label>
+    <input type="date" name="releaseDate" [(ngModel)]="demoDefault.releaseDate" [disabled]="demoDefaultDisabled">
+  </form>
+
+  <button (click)="demoDefaultDisabled = !demoDefaultDisabled">Toggle disabled state</button>
+
+<pre>
+&lt;input type=&quot;text&quot;
+  name=&quot;version&quot;
+  [(ngModel)]=&quot;demoDefault.version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  name=&quot;releaseDate&quot;
+  [(ngModel)]=&quot;demoDefault.releaseDate&quot;&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ demoDefault | json }}
+typeof(releaseDate): {{ typeof(demoDefault.releaseDate) }}
+</pre>
+</div>
+

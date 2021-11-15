@@ -1,0 +1,97 @@
+<h1>Reactive Forms</h1>
+
+<app-explanation-date-value-accessor></app-explanation-date-value-accessor>
+
+<div class="good">
+  <h2>DateValueAccessor</h2>
+
+  <form [formGroup]="myFormDateValue">
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate" useValueAsDate>
+  </form>
+
+  <button (click)="toggle(myFormDateValue)">Toggle disabled state</button>
+
+<pre>
+&lt;input type=&quot;text&quot;
+  formControlName=&quot;version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  formControlName=&quot;releaseDate&quot;
+  <b>useValueAsDate</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ demoDateValue | json }}
+typeof(releaseDate): {{ typeof(demoDateValue.releaseDate) }}
+</pre>
+</div>
+
+<hr>
+
+<app-explanation-local-date-value-accessor></app-explanation-local-date-value-accessor>
+
+<div class="good">
+  <h2>LocalDateValueAccessor</h2>
+
+  <form [formGroup]="myFormLocalDateValue">
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate" useValueAsLocalDate>
+  </form>
+
+  <button (click)="toggle(myFormLocalDateValue)">Toggle disabled state</button>
+
+  <pre>
+&lt;input type=&quot;text&quot;
+  formControlName=&quot;version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  formControlName=&quot;releaseDate&quot;
+  <b>useValueAsLocalDate</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ demoLocalDateValue | json }}
+typeof(releaseDate): {{ typeof(demoLocalDateValue.releaseDate) }}
+</pre>
+</div>
+
+<hr>
+
+<app-explanation-default-value-accessor></app-explanation-default-value-accessor>
+
+<div class="bad">
+  <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
+
+  <form [formGroup]="myFormDefault">
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate">
+  </form>
+
+  <button (click)="toggle(myFormDefault)">Toggle disabled state</button>
+
+<pre>
+&lt;input type=&quot;text&quot;
+  formControlName=&quot;version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  formControlName=&quot;releaseDate&quot;&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ demoDefault | json }}
+typeof(releaseDate): {{ typeof(demoDefault.releaseDate) }}
+</pre>
+</div>

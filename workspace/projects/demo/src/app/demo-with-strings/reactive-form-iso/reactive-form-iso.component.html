@@ -1,0 +1,95 @@
+<h1>Reactive Forms</h1>
+
+<app-explanation-iso-date-value-accessor></app-explanation-iso-date-value-accessor>
+
+<div class="good">
+  <h2>IsoDateValueAccessor</h2>
+
+  <form [formGroup]="myFormDateValue">
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate" useValueAsIso>
+  </form>
+
+  <button (click)="toggle(myFormDateValue)">Toggle disabled state</button>
+
+<pre>
+&lt;input type=&quot;text&quot;
+  formControlName=&quot;version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  formControlName=&quot;releaseDate&quot;
+  <b>useValueAsIso</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ demoIsoDateValue | json }}
+typeof(releaseDate): {{ typeof(demoIsoDateValue.releaseDate) }}
+</pre>
+</div>
+
+<hr>
+
+<app-explanation-local-iso-date-value-accessor></app-explanation-local-iso-date-value-accessor>
+
+<div class="good">
+  <h2>LocalIsoDateValueAccessor</h2>
+
+  <form [formGroup]="myFormLocalDateValue">
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate" useValueAsLocalIso>
+  </form>
+
+  <button (click)="toggle(myFormLocalDateValue)">Toggle disabled state</button>
+
+  <pre>
+&lt;input type=&quot;text&quot;
+  formControlName=&quot;version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  formControlName=&quot;releaseDate&quot;
+  <b>useValueAsLocalIso</b>&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ demoLocalIsoDateValue | json }}
+typeof(releaseDate): {{ typeof(demoLocalIsoDateValue.releaseDate) }}
+</pre>
+</div>
+
+<hr>
+
+<div class="bad">
+  <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
+
+  <form [formGroup]="myFormDefault">
+    <label>Version:</label>
+    <input type="text" formControlName="version">
+
+    <label>Release date:</label>
+    <input type="date" formControlName="releaseDate">
+  </form>
+
+  <button (click)="toggle(myFormDefault)">Toggle disabled state</button>
+
+<pre>
+&lt;input type=&quot;text&quot;
+  formControlName=&quot;version&quot;&gt;
+
+&lt;input type=&quot;date&quot;
+  formControlName=&quot;releaseDate&quot;&gt;
+</pre>
+
+<pre>
+DEBUG:
+{{ demoIsoDefault | json }}
+typeof(releaseDate): {{ typeof(demoIsoDefault.releaseDate) }}
+</pre>
+</div>
