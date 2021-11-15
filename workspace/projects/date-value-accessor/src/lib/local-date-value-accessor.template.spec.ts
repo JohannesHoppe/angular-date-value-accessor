@@ -11,7 +11,7 @@ import { Context, dispatchInputEvent, setupTemplateDrivenForms } from './spec-ut
     </form>`
 })
 export class TestFormComponent {
-  testDate: Date = new Date(2020, 11, 8); // Create LOCAL Date
+  testDate: Date = new Date(2020, 11, 8); // Create LOCAL Date, HINT: Everything except the day is 0 based!
 }
 
 describe('LocalDateValueAccessor (template-driven forms)', () => {
@@ -19,12 +19,22 @@ describe('LocalDateValueAccessor (template-driven forms)', () => {
   let c: Context<TestFormComponent> = {};
   setupTemplateDrivenForms(c, TestFormComponent, LocalDateValueAccessor);
 
-  it('should fix date input controls to bind on dates', waitForAsync(() => {
+  it('should reflect changes from the model to the input after init', () => {
     expect(c.inputElement.value).toBe('2020-12-08');
-  }));
+  });
 
-  it('should populate LOCAL dates (instead of strings) on change', waitForAsync(() => {
+  it('should reflect changes from the model to the input', done => {
+    c.fixture.componentInstance.testDate = new Date(2021, 10, 15);
+    c.fixture.detectChanges();
+    c.fixture.whenStable().then(() => {
+      expect(c.inputElement.value).toBe('2021-11-15');
+      done();
+    })
+  });
+
+  it('should reflect changes from the input to the model', () => {
     dispatchInputEvent(c.inputElement, '2020-12-31');
+
     expect(c.fixture.componentInstance.testDate).toEqual(jasmine.any(Date));
     expect(c.fixture.componentInstance.testDate).toEqual(new Date(2020, 11, 31));
     expect(c.fixture.componentInstance.testDate.getDate()).toBe(31);
@@ -32,5 +42,11 @@ describe('LocalDateValueAccessor (template-driven forms)', () => {
     expect(c.fixture.componentInstance.testDate.getFullYear()).toBe(2020);
     expect(c.fixture.componentInstance.testDate.getHours()).toBe(0);
     expect(c.fixture.componentInstance.testDate.getMinutes()).toBe(0);
-  }));
+  });
+
+  it('should populate NULL for invalid dates', () => {
+    dispatchInputEvent(c.inputElement, "NOT A DATE");
+    expect(c.fixture.componentInstance.testDate).toBeNull();
+    expect(c.inputElement.value).toBe('');
+  });
 });
