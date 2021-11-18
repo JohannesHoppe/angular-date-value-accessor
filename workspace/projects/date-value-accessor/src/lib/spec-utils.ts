@@ -20,12 +20,13 @@ export function setupTemplateDrivenForms<TComp, TAcess>(
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         testComponent,
-        ...(acessor ? [acessor]: [])
-      ],
-      imports: [FormsModule]
-    })
+        ...(acessor ? [acessor] : [])
+    ],
+    imports: [FormsModule],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 
@@ -49,12 +50,13 @@ export function setupReactiveForms<TComp, TAcess>(
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         testComponent,
-        ...(acessor ? [acessor]: [])
-      ],
-      imports: [ReactiveFormsModule]
-    })
+        ...(acessor ? [acessor] : [])
+    ],
+    imports: [ReactiveFormsModule],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   }));
 
