@@ -2,8 +2,8 @@
 [![NPM version][npm-image]][npm-url]
 [![Tests][tests-image]][tests-url]
 
-A set of custom value accessors for Angular.  
-Now you can use `<input type="date">` (provides real JavaScript date objects) directly with two-way data bindings (ngModel) as well as with reactive forms (formControlName/formControl).
+A set of `ControlValueAccessor`s for Angular to work with Browser's native date input elements. 
+Now you can use `<input type="date">` directly with two-way data bindings (`ngModel`) as well as with reactive forms (`formControlName`/`formControl`). Choose freely between date objects and ISO-formatted strings.
 
 ## Demo
 
@@ -25,97 +25,6 @@ Changes in the input field are propagated to the model, but unfortunately the da
 **You can try out a full demo at the following page:**  
 **→ http://johanneshoppe.github.io/angular-date-value-accessor/**
 
-## Usage
-
-You have to explicitly opt-in by adding one of these attribute directives to a HTML date input control: `useValueAsDate`, `useValueAsLocalDate`, `useValueAsIso` or `useValueAsLocalIso`.
-
-```html
-<!-- DateValueAccessor (UTC) --->
-
-<input type="date"
-       name="myBirthday"
-       ngModel
-       useValueAsDate>
-
-OR
-
-<input type="date"
-       name="myBirthday"
-       [(ngModel)]="myBirthday"
-       useValueAsDate>
-
-OR
-
-<input type="date"
-       formControlName="myBirthday"
-       useValueAsDate>
-```
-
-```html
-<!-- LocalDateValueAccessor (Local Time) ⭐️ --->
-
-<input type="date"
-       name="myBirthday"
-       ngModel
-       useValueAsLocalDate>
-
-OR
-
-<input type="date"
-       name="myBirthday"
-       [(ngModel)]="myBirthday"
-       useValueAsLocalDate>
-
-OR
-
-<input type="date"
-       formControlName="myBirthday"
-       useValueAsLocalDate>
-```
-
-```html
-<!-- IsoDateValueAccessor (UTC as ISO string) --->
-
-<input type="date"
-       name="myBirthday"
-       ngModel
-       useValueAsIso>
-
-OR
-
-<input type="date"
-       name="myBirthday"
-       [(ngModel)]="myBirthday"
-       useValueAsIso>
-
-OR
-
-<input type="date"
-       formControlName="myBirthday"
-       useValueAsIso>
-```
-
-```html
-<!-- LocalIsoDateValueAccessor (Local Time as ISO string) ⭐️ --->
-
-<input type="date"
-       name="myBirthday"
-       ngModel
-       useValueAsLocalIso>
-
-OR
-
-<input type="date"
-       name="myBirthday"
-       [(ngModel)]="myBirthday"
-       useValueAsLocalIso>
-
-OR
-
-<input type="date"
-       formControlName="myBirthday"
-       useValueAsLocalIso>
-```
 
 ## Installation
 
@@ -125,7 +34,8 @@ Download the package via NPM:
 npm install angular-date-value-accessor
 ```
 
-## UTC Time and Local Time
+
+## UTC Time or Local Time
 When working with Dates in Javascript you either operate in UTC or Local Time.
 
 * UTC is has no timezone offset.
@@ -139,10 +49,21 @@ Depending on the requirements of your application you can choose from these Valu
 * [LocalIsoDateValueAccessor (Local Time as ISO 8601 string)](#localisodatevalueaccessor-local-time-as-iso-8601-string)
 
 
-## DateValueAccessor (UTC)
+> **ℹ️ Hint:** Most UI component libraries like Angular Material, Kendo Angular, PrimeNG implement their DatePickers operating in Local Time. The Angular Date Pipe uses the Local Time representation of the Date Object by default, too.
 
-The `DateValueAccessor` operates in UTC (Coordinated Universal Time).
-The HTML date input will read the UTC representation of the Date Object. When you select a date it will output an UTC date with the time set to 00:00 (UTC).
+## Installation & Usage
+
+You have to explicitly opt-in by adding one of these attribute directives to a HTML date input control: `useValueAsDate`, `useValueAsLocalDate`, `useValueAsIso` or `useValueAsLocalIso`.
+
+
+### DateValueAccessor (UTC)
+
+The original `DateValueAccessor` operates in UTC (Coordinated Universal Time).
+The HTML date input will use the UTC representation of a given Date Object.
+When you select a date it will output an UTC date with the time set to 00:00 (UTC).
+
+**If you are unsure what to use, use the `LocalDateValueAccessor` and not the `DateValueAccessor`.**
+**Most users will expect the input field to correlate to their local clock.**
 
 Import the module via NgModule:
 
@@ -159,13 +80,29 @@ import { DateValueAccessorModule } from 'angular-date-value-accessor';
 export class AppModule { }
 ```
 
-Now you can apply the `useValueAsDate` to your date input controls.
+Now you can apply the `useValueAsDate` to your date input controls:
 
-## LocalDateValueAccessor (Local Time)
+```html
+<!-- DateValueAccessor (UTC) --->
 
-If you prefer to work with Local Dates then you can use the `LocalDateValueAccessorModule`.
+<input type="date"
+       name="myBirthday"
+       [(ngModel)]="myBirthday"
+       useValueAsDate>
 
-The HTML date input will read the Local Time representation of the Date Object. When you select a date it will output a Local Date with the time set to 00:00 (Local Time).
+OR
+
+<input type="date"
+       formControlName="myBirthday"
+       useValueAsDate>
+```
+
+
+### LocalDateValueAccessor (Local Time)
+
+The improved `LocalDateValueAccessor` operates in your Local Time.
+The HTML date input will use the Local Time representation of a given the Date Object.
+When you select a date it will output a Local Date with the time set to 00:00 (Local Time).
 
 Import the module via NgModule:
 
@@ -182,15 +119,32 @@ import { LocalDateValueAccessorModule } from 'angular-date-value-accessor';
 export class AppModule { }
 ```
 
-Now you can apply the `useValueAsLocalDate` to your date input controls.
+Now you can apply the `useValueAsLocalDate` to your date input controls:
 
-> **ℹ️ Hint:** Most UI component libraries like Angular Material, Kendo Angular, PrimeNG implement their DatePickers operating in Local Time. The Angular Date Pipe uses the Local Time representation of the Date Object by default, too.
+```html
+<!-- LocalDateValueAccessor (Local Time) ⭐️ --->
+
+<input type="date"
+       name="myBirthday"
+       [(ngModel)]="myBirthday"
+       useValueAsLocalDate>
+
+OR
+
+<input type="date"
+       formControlName="myBirthday"
+       useValueAsLocalDate>
+```
 
 
-## IsoDateValueAccessor (UTC as ISO 8601 string)
+### IsoDateValueAccessor (UTC as ISO 8601 string)
 
-This additional directive gets and sets ISO 8601 formatted date strings in HTML date inputs.
+This directive gets and sets ISO 8601 formatted date strings in HTML date inputs.
 The handling of the dates is the same as for the `DateValueAccessor`.
+
+The `IsoDateValueAccessor` operates in UTC (Coordinated Universal Time).
+The HTML date input will use the UTC representation of a given ISO 8601 formatted date string.
+When you select a date it will output an ISO-formatted string with the time set to 00:00 (UTC).
 
 Import the module via NgModule:
 
@@ -206,13 +160,34 @@ import { IsoDateValueAccessorModule } from 'angular-date-value-accessor';
 export class AppModule { }
 ```
 
-Now you can apply the `useValueAsIso` to your date input controls.
+Now you can apply the `useValueAsIso` to your date input controls:
+
+```html
+<!-- IsoDateValueAccessor (UTC as ISO string) --->
+
+<input type="date"
+       name="myBirthday"
+       [(ngModel)]="myBirthday"
+       useValueAsIso>
+
+OR
+
+<input type="date"
+       formControlName="myBirthday"
+       useValueAsIso>
+```
 
 
-## LocalIsoDateValueAccessor (Local Time as ISO 8601 string)
+### LocalIsoDateValueAccessor (Local Time as ISO 8601 string)
 
-This additional directive gets and sets ISO 8601 formatted date strings in HTML date inputs.
+This directive gets and sets ISO 8601 formatted date strings in HTML date inputs.
 The handling of the dates is the same as for the `LocalDateValueAccessor`.
+
+The `LocalIsoDateValueAccessor` operates in your Local Time.
+The HTML date input will use the Local Time representation of a given ISO 8601 formatted date string.
+When you select a date it will output an ISO-formatted string with a time that equals to 00:00 (Local Time).<br>
+<br>
+Note: The timezone of the outputted string is always zero UTC offset, as denoted by the suffix "Z".
 
 Import the module via NgModule:
 
@@ -228,7 +203,28 @@ import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
 export class AppModule { }
 ```
 
-Now you can apply the `useValueAsLocalIso` to your date input controls.
+Now you can apply the `useValueAsLocalIso` to your date input controls:
+
+```html
+<!-- LocalIsoDateValueAccessor (Local Time as ISO string) ⭐️ --->
+
+<input type="date"
+       name="myBirthday"
+       [(ngModel)]="myBirthday"
+       useValueAsLocalIso>
+
+OR
+
+<input type="date"
+       formControlName="myBirthday"
+       useValueAsLocalIso>
+```
+
+
+## License
+
+This code is published under the [MIT license](LICENSE).
+
 
 
 [npm-url]: https://npmjs.org/package/angular-date-value-accessor

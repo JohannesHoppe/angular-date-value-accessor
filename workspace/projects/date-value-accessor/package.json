@@ -1,7 +1,7 @@
 {
   "name": "angular-date-value-accessor",
-  "version": "1.2.1",
-  "description": "DateValueAccessor / LocalDateValueAccessor for Angular. Now you can use <input type='date'> with template-driven and reactive forms!",
+  "version": "2.0.0",
+  "description": "A set of ControlValueAccessors for Angular to work with Browser's native date input elements. Now you can use <input type='date'> with template-driven and reactive forms!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johanneshoppe/angular-date-value-accessor.git"
@@ -9,9 +9,11 @@
   "keywords": [
     "angular",
     "forms",
+    "date",
     "ControlValueAccessor",
     "DateValueAccessor",
     "LocalDateValueAccessor",
+    "LocalIsoDateValueAccessor",
     "UTC",
     "Local Time"
   ],
@@ -26,8 +28,8 @@
   },
   "homepage": "https://github.com/johanneshoppe/angular-date-value-accessor",
   "peerDependencies": {
-    "@angular/common": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0",
-    "@angular/core": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0"
+    "@angular/common": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0",
+    "@angular/core": "^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"
