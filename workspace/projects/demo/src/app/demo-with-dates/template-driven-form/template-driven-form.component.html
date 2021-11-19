@@ -72,7 +72,7 @@ typeof(releaseDate): {{ typeof(demoLocalDateValue.releaseDate) }}
 
 <app-explanation-default-value-accessor></app-explanation-default-value-accessor>
 
-<div class="bad">
+<div class="bad" *ngIf="!isSafari">
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
   <form>
@@ -102,3 +102,6 @@ typeof(releaseDate): {{ typeof(demoDefault.releaseDate) }}
 </pre>
 </div>
 
+<div class="bad" *ngIf="isSafari">
+  Sorry, we disabled the demo of Angular's original DefaultValueAccessor <strong>on Safari</strong> because it causes an error at runtime.
+</div>

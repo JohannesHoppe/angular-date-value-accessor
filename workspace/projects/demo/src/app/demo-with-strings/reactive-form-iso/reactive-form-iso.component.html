@@ -66,7 +66,7 @@ typeof(releaseDate): {{ typeof(demoLocalIsoDateValue.releaseDate) }}
 
 <hr>
 
-<div class="bad">
+<div class="bad" *ngIf="!isSafari">
   <h2>DefaultValueAccessor<br><small>(does not work)</small></h2>
 
   <form [formGroup]="myFormDefault">
@@ -92,4 +92,8 @@ DEBUG:
 {{ demoIsoDefault | json }}
 typeof(releaseDate): {{ typeof(demoIsoDefault.releaseDate) }}
 </pre>
+</div>
+
+<div class="bad" *ngIf="isSafari">
+  Sorry, we disabled the demo of Angular's original DefaultValueAccessor <strong>on Safari</strong> because it causes an error at runtime.
 </div>

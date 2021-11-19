@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { isSafari } from 'projects/date-value-accessor/src/public-api';
 
 import { ReleaseWithIsoString } from '../../shared/release-with-iso-string';
 
@@ -16,6 +17,8 @@ export class ReactiveFormIsoComponent implements OnInit {
   myFormDateValue: FormGroup;
   myFormDefault: FormGroup;
   myFormLocalDateValue: FormGroup;
+
+  isSafari = isSafari();
 
   constructor(private fb: FormBuilder) {
     this.demoIsoDateValue = new ReleaseWithIsoString('2.0.0', new Date('2020-01-01').toISOString()); // UTC

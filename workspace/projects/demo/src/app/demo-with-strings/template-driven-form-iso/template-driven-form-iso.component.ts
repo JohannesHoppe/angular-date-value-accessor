@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { isSafari } from 'projects/date-value-accessor/src/public-api';
+
 import { ReleaseWithIsoString } from '../../shared/release-with-iso-string';
 
 @Component({
@@ -14,6 +16,8 @@ export class TemplateDrivenFormIsoComponent {
   demoIsoDateValueDisabled = false;
   demoLocalIsoDateValueDisabled = false;
   demoIsoDefaultDisabled = false;
+
+  isSafari = isSafari();
 
   constructor() {
     this.demoIsoDateValue = new ReleaseWithIsoString('2.0.0', new Date('2020-01-01').toISOString()); // UTC
