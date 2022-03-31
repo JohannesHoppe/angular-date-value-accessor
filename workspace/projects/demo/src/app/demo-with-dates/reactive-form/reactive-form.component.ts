@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { isSafari } from 'projects/date-value-accessor/src/public-api';
 
 import { Release } from '../../shared/release';
 
@@ -16,6 +17,8 @@ export class ReactiveFormComponent implements OnInit {
   myFormDateValue: FormGroup;
   myFormLocalDateValue: FormGroup;
   myFormDefault: FormGroup;
+
+  isSafari = isSafari();
 
   constructor(private fb: FormBuilder) {
     this.demoDateValue = new Release('2.0.0', new Date('2020-01-01')); // UTC

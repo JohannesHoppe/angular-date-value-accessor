@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { isSafari } from 'projects/date-value-accessor/src/public-api';
+
 import { Release } from '../../shared/release';
 
 @Component({
@@ -14,6 +16,8 @@ export class TemplateDrivenFormComponent {
   demoDateValueDisabled = false;
   demoLocalDateValueDisabled = false;
   demoDefaultDisabled = false;
+
+  isSafari = isSafari();
 
   constructor() {
     this.demoDateValue = new Release('2.0.0', new Date('2020-01-01')); // UTC
