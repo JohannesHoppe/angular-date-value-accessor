@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 import { Release } from '../../shared/release';
 
@@ -13,11 +13,11 @@ export class ReactiveFormComponent implements OnInit {
   demoLocalDateValue: Release;
   demoDefault: Release;
 
-  myFormDateValue: FormGroup;
-  myFormLocalDateValue: FormGroup;
-  myFormDefault: FormGroup;
+  myFormDateValue: UntypedFormGroup;
+  myFormLocalDateValue: UntypedFormGroup;
+  myFormDefault: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: UntypedFormBuilder) {
     this.demoDateValue = new Release('2.0.0', new Date('2020-01-01')); // UTC
     this.demoLocalDateValue = new Release('3.0.0', new Date(2020, 0, 1)); // with offset
     this.demoDefault = new Release('1.5.8', new Date('2016-07-22')); // UTC
@@ -44,7 +44,7 @@ export class ReactiveFormComponent implements OnInit {
     this.myFormDefault.valueChanges.subscribe(values => this.demoDefault = new Release(values.version, values.releaseDate));
   }
 
-  toggle(formGroup: FormGroup) {
+  toggle(formGroup: UntypedFormGroup) {
     const control = formGroup.get('releaseDate');
     if (control.enabled) {
       control.disable();
