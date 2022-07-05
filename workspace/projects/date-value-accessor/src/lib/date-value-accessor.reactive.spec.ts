@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 import { DateValueAccessor } from './date-value-accessor';
 import { Context, dispatchInputEvent, setupReactiveForms } from './spec-utils';
@@ -11,7 +11,7 @@ import { Context, dispatchInputEvent, setupReactiveForms } from './spec-utils';
   </form>`
 })
 export class TestFormComponent {
-  testDate = new UntypedFormControl(new Date('2020-01-01')) // Create UTC Date
+  testDate = new FormControl(new Date('2020-01-01'), { nonNullable: true }) // Create UTC Date
 }
 
 describe('DateValueAccessor (reactive forms)', () => {

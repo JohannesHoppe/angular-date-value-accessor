@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 import { LocalIsoDateValueAccessor } from './local-iso-date-value-accessor';
 import { Context, dispatchInputEvent, setupReactiveForms } from './spec-utils';
@@ -11,7 +11,7 @@ import { Context, dispatchInputEvent, setupReactiveForms } from './spec-utils';
     </form>`
 })
 export class TestFormComponent {
-  testDate = new UntypedFormControl(new Date(2020, 11, 8).toISOString()); // Create LOCAL Date, HINT: Everything except the day is 0 based!
+  testDate = new FormControl(new Date(2020, 11, 8).toISOString(), { nonNullable: true }); // Create LOCAL Date, HINT: Everything except the day is 0 based!
 }
 
 describe('LocalIsoDateValueAccessor (reactive forms)', () => {
