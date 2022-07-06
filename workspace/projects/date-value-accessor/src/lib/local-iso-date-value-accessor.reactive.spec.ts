@@ -11,7 +11,7 @@ import { Context, dispatchInputEvent, setupReactiveForms } from './spec-utils';
     </form>`
 })
 export class TestFormComponent {
-  testDate = new FormControl(new Date(2020, 11, 8).toISOString()); // Create LOCAL Date, HINT: Everything except the day is 0 based!
+  testDate = new FormControl(new Date(2020, 11, 8).toISOString(), { nonNullable: true }); // Create LOCAL Date, HINT: Everything except the day is 0 based!
 }
 
 describe('LocalIsoDateValueAccessor (reactive forms)', () => {

@@ -11,7 +11,7 @@ import { Context, dispatchInputEvent, setupReactiveForms } from './spec-utils';
     </form>`
 })
 export class TestFormComponent {
-  testDate = new FormControl(new Date('2020-01-01').toISOString()); // Create UTC Date
+  testDate = new FormControl(new Date('2020-01-01').toISOString(), { nonNullable: true }); // Create UTC Date
 }
 
 describe('IsoDateValueAccessor (reactive forms)', () => {

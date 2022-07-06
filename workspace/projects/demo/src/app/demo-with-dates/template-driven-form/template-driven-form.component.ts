@@ -7,19 +7,13 @@ import { Release } from '../../shared/release';
 })
 export class TemplateDrivenFormComponent {
 
-  demoDateValue: Release;
-  demoLocalDateValue: Release;
-  demoDefault: Release;
+  demoDateValue = new Release('2.0.0', new Date('2020-01-01')); // UTC
+  demoLocalDateValue = new Release('3.0.0', new Date(2020, 0, 1)); // with offset
+  demoDefault = new Release('1.5.8', new Date('2016-07-22')); // UTC
 
   demoDateValueDisabled = false;
   demoLocalDateValueDisabled = false;
   demoDefaultDisabled = false;
-
-  constructor() {
-    this.demoDateValue = new Release('2.0.0', new Date('2020-01-01')); // UTC
-    this.demoLocalDateValue = new Release('3.0.0', new Date(2020, 0, 1)); // with offset
-    this.demoDefault = new Release('1.5.8', new Date('2016-07-22')); // UTC
-  }
 
   typeof(obj: any) {
     return typeof obj;

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { ReleaseWithIsoString } from '../../shared/release-with-iso-string';
 
@@ -7,38 +7,28 @@ import { ReleaseWithIsoString } from '../../shared/release-with-iso-string';
   selector: 'app-reactive-form-iso',
   templateUrl: './reactive-form-iso.component.html'
 })
-export class ReactiveFormIsoComponent implements OnInit {
+export class ReactiveFormIsoComponent {
 
-  demoIsoDateValue: ReleaseWithIsoString;
-  demoLocalIsoDateValue: ReleaseWithIsoString;
-  demoIsoDefault: ReleaseWithIsoString;
+  demoIsoDateValue = new ReleaseWithIsoString('2.0.0', new Date('2020-01-01').toISOString()); // UTC
+  demoLocalIsoDateValue = new ReleaseWithIsoString('3.0.0', new Date(2020, 0, 1).toISOString()); // with offset
+  demoIsoDefault = new ReleaseWithIsoString('1.5.8', new Date('2016-07-22').toISOString()); // UTC
 
-  myFormDateValue: FormGroup;
-  myFormDefault: FormGroup;
-  myFormLocalDateValue: FormGroup;
+  myFormDateValue = new FormGroup({
+    version:     new FormControl(this.demoIsoDateValue.version, { nonNullable: true }),
+    releaseDate: new FormControl(this.demoIsoDateValue.releaseDate, { nonNullable: true })
+  });
 
-  constructor(private fb: FormBuilder) {
-    this.demoIsoDateValue = new ReleaseWithIsoString('2.0.0', new Date('2020-01-01').toISOString()); // UTC
-    this.demoLocalIsoDateValue = new ReleaseWithIsoString('3.0.0', new Date(2020, 0, 1).toISOString()); // with offset
-    this.demoIsoDefault = new ReleaseWithIsoString('1.5.8', new Date('2016-07-22').toISOString()); // UTC
-  }
+  myFormLocalDateValue = new FormGroup({
+    version:     new FormControl(this.demoLocalIsoDateValue.version, { nonNullable: true }),
+    releaseDate: new FormControl(this.demoLocalIsoDateValue.releaseDate, { nonNullable: true })
+  });
 
-  ngOnInit() {
-    this.myFormDateValue = this.fb.group({
-      version:     [this.demoIsoDateValue.version],
-      releaseDate: [this.demoIsoDateValue.releaseDate]
-    });
+  myFormDefault = new FormGroup({
+    version:     new FormControl(this.demoIsoDefault.version, { nonNullable: true }),
+    releaseDate: new FormControl(this.demoIsoDefault.releaseDate, { nonNullable: true })
+  });
 
-    this.myFormLocalDateValue = this.fb.group({
-      version:     [this.demoLocalIsoDateValue.version],
-      releaseDate: [this.demoLocalIsoDateValue.releaseDate]
-    });
-
-    this.myFormDefault = this.fb.group({
-      version:     [this.demoIsoDefault.version],
-      releaseDate: [this.demoIsoDefault.releaseDate]
-    });
-
+  constructor() {
     this.myFormDateValue.valueChanges.subscribe(values => this.demoIsoDateValue = new ReleaseWithIsoString(values.version, values.releaseDate));
     this.myFormLocalDateValue.valueChanges.subscribe(values => this.demoLocalIsoDateValue = new ReleaseWithIsoString(values.version, values.releaseDate));
     this.myFormDefault.valueChanges.subscribe(values => this.demoIsoDefault = new ReleaseWithIsoString(values.version, values.releaseDate));
