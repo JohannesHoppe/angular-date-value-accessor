@@ -1,6 +1,6 @@
 {
   "name": "angular-date-value-accessor",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A set of ControlValueAccessors for Angular to work with Browser's native date input elements. Now you can use <input type='date'> with template-driven and reactive forms!",
   "repository": {
     "type": "git",

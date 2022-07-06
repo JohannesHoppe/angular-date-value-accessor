@@ -38,7 +38,7 @@ npm install angular-date-value-accessor
 ## UTC Time or Local Time
 When working with Dates in Javascript you either operate in UTC or Local Time.
 
-* UTC is has no timezone offset.
+* UTC has no timezone offset.
 * Local Time depends on the host system time zone and offset.
 
 Javascript Dates support both the UTC and the Local Time representation.
