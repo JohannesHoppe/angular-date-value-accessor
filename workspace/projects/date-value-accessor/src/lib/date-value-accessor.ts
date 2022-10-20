@@ -15,7 +15,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       useExisting: forwardRef(() => DateValueAccessor),
       multi: true
     }
-  ]
+  ],
+  standalone: true
 })
 export class DateValueAccessor implements ControlValueAccessor {
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { LocalIsoDateValueAccessor } from './local-iso-date-value-accessor';
 
 @NgModule({
-  declarations: [LocalIsoDateValueAccessor],
+  imports: [LocalIsoDateValueAccessor],
   exports: [LocalIsoDateValueAccessor]
 })
 export class LocalIsoDateValueAccessorModule { }

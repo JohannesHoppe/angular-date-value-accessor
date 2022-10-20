@@ -65,19 +65,21 @@ When you select a date it will output an UTC date with the time set to 00:00 (UT
 **If you are unsure what to use, use the `LocalDateValueAccessor` and not the `DateValueAccessor`.**
 **Most users will expect the input field to correlate to their local clock.**
 
-Import the module via NgModule:
+Import the standalone directive *or* the NgModule:
 
 ```js
 // app.module.ts
 
-import { DateValueAccessorModule } from 'angular-date-value-accessor';
+import { DateValueAccessor, DateValueAccessorModule } from 'angular-date-value-accessor';
 
 @NgModule({
   imports: [
+    DateValueAccessor
+    // OR
     DateValueAccessorModule
   ]
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 Now you can apply the `useValueAsDate` to your date input controls:
@@ -104,19 +106,21 @@ The improved `LocalDateValueAccessor` operates in your Local Time.
 The HTML date input will use the Local Time representation of a given the Date Object.
 When you select a date it will output a Local Date with the time set to 00:00 (Local Time).
 
-Import the module via NgModule:
+Import the standalone directive *or* the NgModule:
 
 ```js
 // app.module.ts
 
-import { LocalDateValueAccessorModule } from 'angular-date-value-accessor';
+import { LocalDateValueAccessor, LocalDateValueAccessorModule } from 'angular-date-value-accessor';
 
 @NgModule({
   imports: [
+    LocalDateValueAccessor
+    // OR
     LocalDateValueAccessorModule
   ]
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 Now you can apply the `useValueAsLocalDate` to your date input controls:
@@ -146,14 +150,16 @@ The `IsoDateValueAccessor` operates in UTC (Coordinated Universal Time).
 The HTML date input will use the UTC representation of a given ISO 8601 formatted date string.
 When you select a date it will output an ISO-formatted string with the time set to 00:00 (UTC).
 
-Import the module via NgModule:
+Import the standalone directive *or* the NgModule:
 
 ```js
 // app.module.ts
-import { IsoDateValueAccessorModule } from 'angular-date-value-accessor';
+import { IsoDateValueAccessor, IsoDateValueAccessorModule } from 'angular-date-value-accessor';
 
 @NgModule({
   imports: [
+    IsoDateValueAccessor
+    // OR
     IsoDateValueAccessorModule
   ]
 })
@@ -189,14 +195,16 @@ When you select a date it will output an ISO-formatted string with a time that e
 <br>
 Note: The timezone of the outputted string is always zero UTC offset, as denoted by the suffix "Z".
 
-Import the module via NgModule:
+Import the standalone directive *or* the NgModule:
 
 ```js
 // app.module.ts
-import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
+import { LocalIsoDateValueAccessor, LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
 
 @NgModule({
   imports: [
+    LocalIsoDateValueAccessor
+    // OR
     LocalIsoDateValueAccessorModule
   ]
 })

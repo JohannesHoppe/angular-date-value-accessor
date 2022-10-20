@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { DateValueAccessor } from './date-value-accessor';
 
 @NgModule({
-  declarations: [DateValueAccessor],
+  imports: [DateValueAccessor],
   exports: [DateValueAccessor]
 })
 export class DateValueAccessorModule { }
