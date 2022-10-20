@@ -19,9 +19,14 @@
   ],
   "author": {
     "name": "Johannes Hoppe",
-    "email": "johannes.hoppe@haushoppe-its.de",
-    "url": "http://haushoppe-its.de/"
+    "email": "johannes.hoppe@haushoppe-its.de"
   },
+  "contributors": [
+    {
+      "name": "Ferdinand Malcher",
+      "email": "ferdinand@malcher.media"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/johanneshoppe/angular-date-value-accessor/issues"
