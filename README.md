@@ -44,7 +44,7 @@ When working with Dates in Javascript you either operate in UTC or Local Time.
 Javascript Dates support both the UTC and the Local Time representation.
 Depending on the requirements of your application you can choose from these Value Accessors:
 * [DateValueAccessor (UTC)](#datevalueaccessor-utc)
-* [LocalDateValueAccessor (Local Time)](#localdatevalueaccessor-local-time)
+* [LocalDateValueAccessor (Local Time) ⭐️](#localdatevalueaccessor-local-time)
 * [IsoDateValueAccessor (UTC as ISO 8601 string)](#isodatevalueaccessor-utc-as-iso-8601-string)
 * [LocalIsoDateValueAccessor (Local Time as ISO 8601 string)](#localisodatevalueaccessor-local-time-as-iso-8601-string)
 
@@ -100,7 +100,7 @@ OR
 ```
 
 
-### LocalDateValueAccessor (Local Time)
+### LocalDateValueAccessor (Local Time) ⭐️
 
 The improved `LocalDateValueAccessor` operates in your Local Time.
 The HTML date input will use the Local Time representation of a given the Date Object.
