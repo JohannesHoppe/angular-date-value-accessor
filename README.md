@@ -5,6 +5,10 @@
 A set of `ControlValueAccessor`s for Angular to work with Browser's native date input elements. 
 Now you can use `<input type="date">` directly with two-way data bindings (`ngModel`) as well as with reactive forms (`formControlName`/`formControl`). Choose freely between date objects and ISO-formatted strings.
 
+## Releases
+
+The latest version is v3.0.0. Please refer to the [releases page](https://github.com/JohannesHoppe/angular-date-value-accessor/releases) to see which version of the package is compatible with which version of Angular and to find out what new features were rolled out at which point in time.
+
 ## Demo
 
 Here you can see the `DateValueAccessor` - the binding works!
